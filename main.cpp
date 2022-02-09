@@ -2,18 +2,23 @@
 using namespace std;
 
 void tiger_input();
-void goat_input();
-void kill_goat(int x,int y);
 void tiger_move();
-void print_board();
+int tiger_possible_move(int m1,int m2);
+int tiger_info();
+void kill_goat();
+
+void goat_input();
 void goat_move();
 
+void print_board();
 
- int g1,g2,g3,g4,t1,t2,t3,t4;//Temporary_variable_for_input
+int g1,g2,g3,g4,t1,t2,t3,t4;  //Temporary_variable_for_input
   char board[50][50];
-  int g_count=20;
-  int t_count=5;
-  int key;
+  int g_count=20;       //GOAT NUMBER IS UP TO 20
+  int t_count=4;        // TOTAL TIGER IS
+  int total_move=0;     //TIGERS POSSIBLE MOVE NUMBER      
+  int killed_g=0;       // KILLED GOAT NUMBER  
+
 
 int main(){
    
@@ -28,23 +33,18 @@ int main(){
     board[4][0]='T';
     board[4][4]='T';
 
-     for(int i=0;i<5;i++){
-        for(int j=0;j<5;j++){
-           cout<< board[i][j]<<" ";
-        }
-        cout<<endl;
-     }
+      for(;;){
+            print_board();
+            goat_input(); 
+            print_board();
+            if(tiger_info()==0){
+                cout<<"CONGRATULATIONS!! GOAT WIN THE MATCH!!!"; break;}
+              else  tiger_input();
+            if(killed_g==5){cout<<"CONGRATULATIONS!! TIGER WIN THE MATCH!!!"; break;}
+         }
 
-   for(;;){
-       goat_input(); 
-       tiger_input();
-        print_board();
-        cin>>key;
-        if(key==0) break;
-    }
+      }
 
-
-}
 
 
  void goat_input(){                              //...................GOAT_MOVE.............................
@@ -54,7 +54,7 @@ int main(){
          cin>>g3>>g4;
           if(board[g3][g4] =='*'){
               board[g3][g4]='G';g_count--;}
-          else { cout<<"WRONG!!! INPUT INDEX FOR GOAT MOVE\n";goat_input();}
+          else { cout<<"WRONG INDEX!!!\n";goat_input();}
         }
 
       else if(g_count==0){                       //goat_move_when_all goats are in field
@@ -67,81 +67,72 @@ int main(){
 void tiger_input(){     
     cout<<"\nInput Index for tiger move:";        //..........TIGER_MOVE.............
      cin>>t1>>t2>>t3>>t4;
-     if(board[t1][t2]!='T') {cout<<"WRONGG!!";tiger_input();}
-      else tiger_move();  
+     if(board[t1][t2]!='T') {cout<<"WRONG!!";tiger_input();}
+      else kill_goat();  
+      
    }
 
 
-void print_board(){                                //........PRINTING _BOARD........
-    for(int i=0;i<5;i++){
-        for(int j=0;j<5;j++){
-           cout<< board[i][j]<<" ";
+void print_board(){   
+   for(int m=0;m<5;m+=1){cout<<"  "<<m;}
+   cout<<"\n";          
+     for(int i=0;i<5;i++){
+        cout<<i;
+         for(int j=0;j<5;j++){
+           cout<<" "<<board[i][j]<<" ";
+             }cout<<"\n"; 
         }
-        cout<<endl;
     }
-}
 
 
 
 void tiger_move(){
-    if((t1==0 && t2==0)||(t1==0 && t2==2)||(t1==0 && t2==4)||(t1==1 && t2==1)||(t1==1 && t2==3)|| (t1==2 && t2==0)||(t1==2 && t2==2)||
-    (t1==2 && t2==4)||(t1==3 && t2==1)||(t1==3 && t2==3)|| (t1==4 && t2==0)||(t1==4 && t2==2)||(t1==4 && t2==4)){
+      if((t1==0 && t2==0)||(t1==0 && t2==2)||(t1==0 && t2==4)||(t1==1 && t2==1)||(t1==1 && t2==3)|| (t1==2 && t2==0)||(t1==2 && t2==2)||
+      (t1==2 && t2==4)||(t1==3 && t2==1)||(t1==3 && t2==3)|| (t1==4 && t2==0)||(t1==4 && t2==2)||(t1==4 && t2==4)){
 
-        if(((t1-1==t3)&&(t2==t4))||((t1+1==t3)&&(t2==t4))){
-            if(board[t3][t4]=='*'){ board[t3][t4]='T';board[t1][t2]='*';}
-            else if(board[t3][t4]=='T') {cout<<"WRONG INDEX !!";tiger_input();}
-             else if(board[t3][t4]=='G') kill_goat(t3,t4);
-             else {cout<<"WRONG INDEX !!";tiger_input();}
-        }
-        else if(((t1==t3)&&(t2-1==t4))||((t1==t3)&&(t2+1==t4))){
+           if(((t1-1==t3)&&(t2==t4))||((t1+1==t3)&&(t2==t4))){
+                if(board[t3][t4]=='*'){ board[t3][t4]='T';board[t1][t2]='*';}
+                else {cout<<"WRONG INDEX !!";tiger_input();}
+            }
+            
+            else if(((t1==t3)&&(t2-1==t4))||((t1==t3)&&(t2+1==t4))){
+              if(board[t3][t4]=='*') { board[t3][t4]='T';board[t1][t2]='*';}
+                else {cout<<"WRONG INDEX !!";tiger_input();}
+            }
+
+            else if(((t1-1==t3)&&(t2+1==t4))||((t1+1==t3)&&(t2-1==t4))){
              if(board[t3][t4]=='*') { board[t3][t4]='T';board[t1][t2]='*';}
-            else if(board[t3][t4]=='T') {cout<<"WRONG INDEX !!";tiger_input();}
-             else if(board[t3][t4]=='G') kill_goat(t3,t4);
-             else {cout<<"WRONG INDEX !!";tiger_input();}
-        }
-        else if(((t1-1==t3)&&(t2+1==t4))||((t1+1==t3)&&(t2-1==t4))){
-             if(board[t3][t4]=='*') { board[t3][t4]='T';board[t1][t2]='*';}
-            else if(board[t3][t4]=='T') {cout<<"WRONG INDEX !!";tiger_input();}
-             else if(board[t3][t4]=='G') kill_goat(t3,t4);
              else{cout<<"WRONG INDEX !!";tiger_input();}
-        }
-        else if(((t1-1==t3)&&(t2-1==t4))||((t1+1==t3)&&(t2+1==t4))){
+            }
+
+            else if(((t1-1==t3)&&(t2-1==t4))||((t1+1==t3)&&(t2+1==t4))){
              if(board[t3][t4]=='*') { board[t3][t4]='T';board[t1][t2]='*';}
-            else if(board[t3][t4]=='T') {cout<<"WRONG INDEX !!";tiger_input();}
-             else if(board[t3][t4]=='G') kill_goat(t3,t4);
              else {cout<<"WRONG INDEX !!";tiger_input();}
-        }
-        else {cout<<"WRONG INDEX !!";tiger_input();}
+            }
 
-    } 
+           else {cout<<"WRONG INDEX !!";tiger_input();}
 
-    else if((t1==0 && t2==1)||(t1==0 && t2==3)||(t1==1 && t2==0)||(t1==1 && t2==2)||(t1==1 && t2==4)|| (t1==2 && t2==1)||(t1==2 && t2==3)||
+        } 
+
+
+     else if((t1==0 && t2==1)||(t1==0 && t2==3)||(t1==1 && t2==0)||(t1==1 && t2==2)||(t1==1 && t2==4)|| (t1==2 && t2==1)||(t1==2 && t2==3)||
             (t1==3 && t2==0)||(t1==3 && t2==2)||(t1==3 && t2==4)|| (t1==4 && t2==1)||(t1==4 && t2==3)){
 
-        if(((t1-1==t3)&&(t2==t4))||((t1+1==t3)&&(t2==t4))){
-            if(board[t3][t4]=='*'){ board[t3][t4]='T';board[t1][t2]='*';}
-            else if(board[t3][t4]=='T') {cout<<"WRONG INDEX !!";tiger_input();}
-             else if(board[t3][t4]=='G') kill_goat(t3,t4);
-             else {cout<<"WRONG INDEX !!";tiger_input();}
-        }
-        else if(((t1==t3)&&(t2-1==t4))||((t1==t3)&&(t2+1==t4))){
-             if(board[t3][t4]=='*') { board[t3][t4]='T';board[t1][t2]='*';}
-            else if(board[t3][t4]=='T') {cout<<"WRONG INDEX !!";tiger_input();}
-             else if(board[t3][t4]=='G') kill_goat(t3,t4);
-             else {cout<<"WRONG INDEX !!";tiger_input();}
-        }
-        else {cout<<"WRONG INDEX !!";tiger_input();}
+                if(((t1-1==t3)&&(t2==t4))||((t1+1==t3)&&(t2==t4))){
+                  if(board[t3][t4]=='*'){board[t3][t4]='T';board[t1][t2]='*';}
+                    else {cout<<"WRONG INDEX !!";tiger_input();}
+                }
 
-        
+               else if(((t1==t3)&&(t2-1==t4))||((t1==t3)&&(t2+1==t4))){
+                 if(board[t3][t4]=='*') { board[t3][t4]='T';board[t1][t2]='*';}
+                 else {cout<<"WRONG INDEX !!";tiger_input();}
+                }
+
+                else {cout<<"WRONG INDEX !!";tiger_input();}
+   
     }
-
 }
 
-void kill_goat(int x,int y){
-
-   // ................
-
-}  
 
 
 void goat_move(){
@@ -186,6 +177,163 @@ void goat_move(){
         }
 
     }
+
+
+
+    //...........TIGERS' POSSIBLE MOVE COUNTING AND PRINTING............
+ int tiger_possible_move(int m1,int m2){ 
+     int   move_count=0;
+     if((m1==0 && m2==0)||(m1==0 && m2==2)||(m1==0 && m2==4)||(m1==1 && m2==1)||(m1==1 && m2==3)|| (m1==2 && m2==0)||(m1==2 && m2==2)||
+     (m1==2 && m2==4)||(m1==3 && m2==1)||(m1==3 && m2==3)|| (m1==4 && m2==0)||(m1==4 && m2==2)||(m1==4 && m2==4)){
+
+        if(board[m1-1][m2+1]=='*'){ cout<<" "<<m1-1<<","<<m2+1;move_count++;}
+        else if(board[m1-1][m2+1]=='G'){
+            if(board[m1-2][m2+2]=='*') cout<<" "<<m1-2<<","<<m2+2;move_count++;}
+
+        if(board[m1+1][m2-1]=='*'){ cout<<" "<<m1+1<<","<<m2-1;move_count++;}
+        else if(board[m1+1][m2-1]=='G'){
+            if(board[m1+2][m2-2]=='*') cout<<" "<<m1+2<<","<<m2-2;move_count++;}
+
+        if(board[m1-1][m2-1]=='*'){ cout<<" "<<m1-1<<","<<m2-1;move_count++;}
+        else if(board[m1-1][m2-1]=='G'){
+            if(board[m1-2][m2-2]=='*') cout<<" "<<m1-2<<","<<m2-2;move_count++;}    
+        
+        if(board[m1+1][m2+1]=='*'){ cout<<" "<<m1+1<<","<<m2+1;move_count++;}
+        else if(board[m1+1][m2+1]=='G'){
+            if(board[m1+2][m2+2]=='*') cout<<" "<<m1+2<<","<<m2+2;move_count++;}
+
+        if(board[m1-1][m2]=='*'){ cout<<" "<<m1-1<<","<<m2;move_count++;}
+        else if(board[m1-1][m2]=='G'){
+            if(board[m1-2][m2]=='*') cout<<" "<<m1-2<<","<<m2;move_count++;}   
+
+
+        if(board[m1+1][m2]=='*'){ cout<<" "<<m1+1<<","<<m2;move_count++;}
+        else if(board[m1+1][m2]=='G'){
+            if(board[m1+2][m2]=='*') cout<<" "<<m1+2<<","<<m2;move_count++;}  
+
+         if(board[m1][m2+1]=='*'){ cout<<" "<<m1<<","<<m2+1;move_count++;}
+         else if(board[m1][m2+1]=='G'){
+            if(board[m1][m2+2]=='*') cout<<" "<<m1<<","<<m2+2;move_count++;}      
+          
+        if(board[m1][m2-1]=='*'){ cout<<" "<<m1<<","<<m2-1;move_count++;}
+        else if(board[m1][m2-1]=='G'){
+         if(board[m1][m2-2]=='*') cout<<" "<<m1<<","<<m2-2;move_count++;} 
+        
+    }   
+
+
+    else if((m1==0 && m2==1)||(m1==0 && m2==3)||(m1==1 && m2==0)||(m1==1 && m2==2)||(m1==1 && m2==4)|| (m1==2 && m2==1)||(m1==2 && m2==3)||
+            (m1==3 && m2==0)||(m1==3 && m2==2)||(m1==3 && m2==4)|| (m1==4 && m2==1)||(m1==4 && m2==3)){
+
+                if(board[m1-1][m2]=='*'){ cout<<m1-1<<m2;move_count++;}
+        else if(board[m1-1][m2]=='G'){
+            if(board[m1-2][m2]=='*') cout<<" "<<m1-2<<","<<m2;move_count++;}   
+
+        if(board[m1+1][m2]=='*'){ cout<<" "<<m1+1<<","<<m2;move_count++;}
+        else if(board[m1+1][m2]=='G'){
+            if(board[m1+2][m2]=='*') cout<<" "<<m1+2<<","<<m2;move_count++;}  
+
+         if(board[m1][m2+1]=='*'){ cout<<" "<<m1<<","<<m2+1;move_count++;}
+         else if(board[m1][m2+1]=='G'){
+            if(board[m1][m2+2]=='*') cout<<" "<<m1<<","<<m2+2;move_count++;}      
+          
+        if(board[m1][m2-1]=='*'){ cout<<" "<<m1<<","<<m2-1;move_count++;}
+        else if(board[m1][m2-1]=='G'){
+         if(board[m1][m2-2]=='*') cout<<" "<<m1<<","<<m2-2;move_count++;} 
+
+    }
+    return move_count;
+
+  }
+
+//..................STATUS FOR MOVING TIGER..........
+   int tiger_info(){
+       int temp=0;
+       for(int i=0;i<5;i++){
+             for(int j=0;j<5;j++){ 
+                  if(board[i][j]=='T'){
+                      cout<<i<<" "<<j<<"TIGER CAN MOVE IN:";
+                      temp=tiger_possible_move(i,j); cout<<"\n";
+                      total_move=total_move + temp;
+                      if(temp==0) {cout<<i<<" "<<j<<" TIGER IS IN TRAP!!"; cout<<"\n";}
+                    }
+                }
+        }
+        return total_move;
+   }    
+
+  //...............killing goat and changing the index.........
+void kill_goat(){ 
+     if((t1==0 && t2==0)||(t1==0 && t2==2)||(t1==0 && t2==4)||(t1==1 && t2==1)||(t1==1 && t2==3)|| (t1==2 && t2==0)||(t1==2 && t2==2)||
+      (t1==2 && t2==4)||(t1==3 && t2==1)||(t1==3 && t2==3)|| (t1==4 && t2==0)||(t1==4 && t2==2)||(t1==4 && t2==4)){
+
+        if((t1-2==t3)&&(t2==t4)){
+                if(board[t1-1][t2]=='G'){
+                board[t3][t4]='T'; board[t1-1][t2]='*';board[t1][t2]='*'; killed_g++;}
+                else {tiger_move();}
+            }
+
+        else if((t1+2==t3)&&(t2==t4)){
+            if(board[t1+1][t2]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1+1][t2]='*';killed_g++;}
+            else {tiger_move();}
+          }  
+
+        else if((t1==t3)&&(t2-2==t4)){
+            if(board[t1][t2-1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1][t2-1]='*';killed_g++;}
+            else {tiger_move();}
+          }      
+        
+        else if((t1==t3)&&(t2+2==t4)){
+            if(board[t1][t2+1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1][t2+1]='*';killed_g++;}
+            else {tiger_move();}
+          }  
+
+        else if((t1-2==t3)&&(t2-2==t4)){
+            if(board[t1-1][t2-1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1-1][t2-1]='*';killed_g++;}
+            else {tiger_move();}
+          }   
+
+        else if((t1+2==t3)&&(t2+2==t4)){
+            if(board[t1+1][t2+1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1+1][t2+1]='*';killed_g++;}
+            else {tiger_move();}
+          }  
+         else if((t1-2==t3)&&(t2+2==t4)){
+            if(board[t1-1][t2+1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1-1][t2+1]='*';killed_g++;}
+            else {tiger_move();}
+          }   
+       else if((t1+2==t3)&&(t2-2==t4)){
+            if(board[t1+1][t2-1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1+1][t2-1]='*';killed_g++;}
+            else {tiger_move();}
+          }
+
+        else   tiger_move();
+        
+    }   
+
+    else if((t1==0 && t2==1)||(t1==0 && t2==3)||(t1==1 && t2==0)||(t1==1 && t2==2)||(t1==1 && t2==4)|| (t1==2 && t2==1)||(t1==2 && t2==3)||
+            (t1==3 && t2==0)||(t1==3 && t2==2)||(t1==3 && t2==4)|| (t1==4 && t2==1)||(t1==4 && t2==3)){
+
+            if((t1-2==t3)&&(t2==t4)){
+              if(board[t1-1][t2]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1-1][t2]='*';killed_g++;}
+              else {tiger_move();}
+            }
+           else  if((t1+2==t3)&&(t2==t4)){
+              if(board[t1+1][t2]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1+1][t2]='*';killed_g++;}
+              else {tiger_move();}
+            }  
+            else if((t1==t3)&&(t2-2==t4)){
+              if(board[t1][t2-1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1][t2-1]='*';killed_g++;}
+              else {tiger_move();}
+            }      
+          else if((t1==t3)&&(t2+2==t4)){
+             if(board[t1][t2+1]=='G'){ board[t3][t4]='T';board[t1][t2]='*';board[t1][t2+1]='*';killed_g++;}
+             else {tiger_move();}
+            } 
+
+          else tiger_move();
+       }
+
+  } 
 
 
 
