@@ -21,7 +21,6 @@ int g1,g2,g3,g4,t1,t2,t3,t4;  //Temporary_variable_for_input
 
 
 int main(){
-   
     for(int i=0;i<5;i++){
         for(int j=0;j<5;j++){
             board[i][j]='*';
@@ -45,9 +44,10 @@ int main(){
 
       }
 
+//.............END MAIN METHOD...................
 
-
- void goat_input(){                              //...................GOAT_MOVE.............................
+//...................GOAT_MOVE.............................
+ void goat_input(){                              
      cout<<" Index for goat move:";  
 
      if(g_count>0){                             //goat_move_when_some goats are still in hand
@@ -65,7 +65,7 @@ int main(){
 
 
 void tiger_input(){     
-    cout<<"\nInput Index for tiger move:";        //..........TIGER_MOVE.............
+    cout<<"\nInput Index for tiger move:";       
      cin>>t1>>t2>>t3>>t4;
      if(board[t1][t2]!='T') {cout<<"WRONG!!";tiger_input();}
       else kill_goat();  
@@ -180,7 +180,7 @@ void goat_move(){
 
 
 
-    //...........TIGERS' POSSIBLE MOVE COUNTING AND PRINTING............
+ //....................TIGERS' POSSIBLE MOVE COUNTING AND PRINTING............
  int tiger_possible_move(int m1,int m2){ 
      int   move_count=0;
      if((m1==0 && m2==0)||(m1==0 && m2==2)||(m1==0 && m2==4)||(m1==1 && m2==1)||(m1==1 && m2==3)|| (m1==2 && m2==0)||(m1==2 && m2==2)||
@@ -262,7 +262,7 @@ void goat_move(){
         return total_move;
    }    
 
-  //...............killing goat and changing the index.........
+ //...............killing goat and changing the index.........
 void kill_goat(){ 
      if((t1==0 && t2==0)||(t1==0 && t2==2)||(t1==0 && t2==4)||(t1==1 && t2==1)||(t1==1 && t2==3)|| (t1==2 && t2==0)||(t1==2 && t2==2)||
       (t1==2 && t2==4)||(t1==3 && t2==1)||(t1==3 && t2==3)|| (t1==4 && t2==0)||(t1==4 && t2==2)||(t1==4 && t2==4)){
