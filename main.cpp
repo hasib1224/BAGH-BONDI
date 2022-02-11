@@ -252,7 +252,7 @@ void goat_move(){
        for(int i=0;i<5;i++){
              for(int j=0;j<5;j++){ 
                   if(board[i][j]=='T'){
-                      cout<<i<<" "<<j<<"TIGER CAN MOVE IN:";
+                     cout<<i<<","<<j<<" TIGER CAN MOVE IN:";
                       temp=tiger_possible_move(i,j); cout<<"\n";
                       total_move=total_move + temp;
                       if(temp==0) {cout<<i<<" "<<j<<" TIGER IS IN TRAP!!"; cout<<"\n";}
