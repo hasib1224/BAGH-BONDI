@@ -182,6 +182,7 @@ void goat_move(){
 
  //....................TIGERS' POSSIBLE MOVE COUNTING AND PRINTING............
  int tiger_possible_move(int m1,int m2){ 
+   
      int   move_count=0;
      if((m1==0 && m2==0)||(m1==0 && m2==2)||(m1==0 && m2==4)||(m1==1 && m2==1)||(m1==1 && m2==3)|| (m1==2 && m2==0)||(m1==2 && m2==2)||
      (m1==2 && m2==4)||(m1==3 && m2==1)||(m1==3 && m2==3)|| (m1==4 && m2==0)||(m1==4 && m2==2)||(m1==4 && m2==4)){
@@ -225,7 +226,7 @@ void goat_move(){
     else if((m1==0 && m2==1)||(m1==0 && m2==3)||(m1==1 && m2==0)||(m1==1 && m2==2)||(m1==1 && m2==4)|| (m1==2 && m2==1)||(m1==2 && m2==3)||
             (m1==3 && m2==0)||(m1==3 && m2==2)||(m1==3 && m2==4)|| (m1==4 && m2==1)||(m1==4 && m2==3)){
 
-                if(board[m1-1][m2]=='*'){ cout<<m1-1<<m2;move_count++;}
+                if(board[m1-1][m2]=='*'){ cout<<" "<<m1-1<<","<<m2;move_count++;}
         else if(board[m1-1][m2]=='G'){
             if(board[m1-2][m2]=='*') cout<<" "<<m1-2<<","<<m2;move_count++;}   
 
