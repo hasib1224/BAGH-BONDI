@@ -8,13 +8,15 @@ using namespace std;
 void cordinatew(); 
 void board_view();
 int goat_input(int x,int y);
+int tiger_input(int x,int y);
+int tiger_scope(int m1,int m2);
 
 struct cordin{
    int x;
    int y; }board[30][30];
 
 char board2[50][50];
-int total_goat=20;
+int total_goat=20, move_count;
 
  
 //...MAIN FUNCTION.....
@@ -53,6 +55,23 @@ while(1){
       if(k==1) break;
    }              
 }
+
+cleardevice();
+board_view();
+
+
+while(1){
+   if(GetAsyncKeyState(VK_LBUTTON)){
+      GetCursorPos(&cursor);
+      x=cursor.x;
+      y=cursor.y;
+      k=tiger_input(x,y);
+      if(k==1) break;
+   }              
+}
+
+//board_view();
+
 
 
 
@@ -107,7 +126,7 @@ int goat_input(int x,int y){
          if((x>board[i][j].x-20 && x<board[i][j].x+20) && (y>board[i][j].y-20 && y<board[i][j].y+20)){
             if(board2[i][j]=='*'){
                readimagefile("GOAT.jpg",board[i][j].x-20,board[i][j].y-20,board[i][j].x+20, board[i][j].y+20);
-               total_goat--;
+               total_goat--;board2[i][j]='G';
                k=1;return k;
             } 
          }
@@ -163,6 +182,92 @@ initwindow(1600,800,"MENU",0,0,false,true);
 
 }
 
+
+
+int tiger_input(int x,int y){
+   int k;
+   for(int i=0;i<5;i++){
+      for(int j=0;j<5;j++){
+         if((x>board[i][j].x-20 && x<board[i][j].x+20) && (y>board[i][j].y-20 && y<board[i][j].y+20)){
+            if(board2[i][j]=='T'){
+              //readimagefile("TIGER.jpg",board[i][j].x-20,board[i][j].y-20,board[i][j].x+20, board[i][j].y+20);
+               tiger_scope(i,j);
+               k=1;return k;
+            } 
+         }
+      }
+   }return k;
+}          
   
 
+
+int tiger_scope(int m1,int m2){
+   setlinestyle(0,0,10);
+   setcolor(GREEN);
+
+   int   move_count=0;
+    if((m1==0 && m2==0)||(m1==0 && m2==2)||(m1==0 && m2==4)||(m1==1 && m2==1)||(m1==1 && m2==3)|| (m1==2 && m2==0)||(m1==2 && m2==2)||
+   (m1==2 && m2==4)||(m1==3 && m2==1)||(m1==3 && m2==3)|| (m1==4 && m2==0)||(m1==4 && m2==2)||(m1==4 && m2==4)){
+
+      if(board2[m1-1][m2+1]=='*'){ rectangle(board[m1-1][m2+1].x-20,board[m1-1][m2+1].y-20,board[m1-1][m2+1].x+20, board[m1-1][m2+1].y+20);move_count++;}
+      else if(board2[m1-1][m2+1]=='G'){
+        if(board2[m1-2][m2+2]=='*')  rectangle(board[m1-2][m2+2].x-20,board[m1-2][m2+2].y-20,board[m1-2][m2+2].x+20, board[m1-2][m2+2].y+20);move_count++;}
+
+        if(board2[m1+1][m2-1]=='*'){ rectangle(board[m1+1][m2-1].x-20,board[m1+1][m2-1].y-20,board[m1+1][m2-1].x+20, board[m1+1][m2-1].y+20);move_count++;}
+        else if(board2[m1+1][m2-1]=='G'){
+            if(board2[m1+2][m2-2]=='*')  rectangle(board[m1+2][m2-2].x-20,board[m1+2][m2-2].y-20,board[m1+2][m2-2].x+20, board[m1+2][m2-2].y+20);move_count++;}
+
+        if(board2[m1-1][m2-1]=='*'){ rectangle(board[m1-1][m2-1].x-20,board[m1-1][m2-1].y-20,board[m1-1][m2-1].x+20, board[m1-1][m2-1].y+20);move_count++;}
+        else if(board2[m1-1][m2-1]=='G'){
+            if(board2[m1-2][m2-2]=='*')rectangle(board[m1-2][m2-2].x-20,board[m1-2][m2-2].y-20,board[m1-2][m2-2].x+20, board[m1-2][m2-2].y+20);move_count++;}    
+        
+        if(board2[m1+1][m2+1]=='*'){ rectangle(board[m1+1][m2+1].x-20,board[m1+1][m2+1].y-20,board[m1+1][m2+1].x+20, board[m1+1][m2+1].y+20);move_count++;}
+        else if(board2[m1+1][m2+1]=='G'){
+            if(board2[m1+2][m2+2]=='*') rectangle(board[m1+2][m2+2].x-20,board[m1+2][m2+2].y-20,board[m1+2][m2+2].x+20, board[m1+2][m2+2].y+20);move_count++;}
+
+        if(board2[m1-1][m2]=='*'){ rectangle(board[m1-1][m2].x-20,board[m1-1][m2].y-20,board[m1-1][m2].x+20, board[m1-1][m2].y+20);move_count++;}
+        else if(board2[m1-1][m2]=='G'){
+            if(board2[m1-2][m2]=='*') rectangle(board[m1-2][m2].x-20,board[m1-2][m2].y-20,board[m1-2][m2].x+20, board[m1-2][m2].y+20);move_count++;}   
+
+
+        if(board2[m1+1][m2]=='*'){ rectangle(board[m1+1][m2].x-20,board[m1+1][m2].y-20,board[m1+1][m2].x+20, board[m1+1][m2].y+20);move_count++;}
+        else if(board2[m1+1][m2]=='G'){
+            if(board2[m1+2][m2]=='*') rectangle(board[m1+2][m2].x-20,board[m1+2][m2].y-20,board[m1+2][m2].x+20, board[m1+2][m2].y+20);move_count++;}  
+
+         if(board2[m1][m2+1]=='*'){ rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);move_count++;}
+         else if(board2[m1][m2+1]=='G'){
+            if(board2[m1][m2+2]=='*')  rectangle(board[m1][m2+2].x-20,board[m1][m2+2].y-20,board[m1][m2+2].x+20, board[m1][m2+2].y+20);move_count++;}      
+          
+        if(board2[m1][m2-1]=='*'){  rectangle(board[m1][m2-1].x-20,board[m1][m2-1].y-20,board[m1][m2-1].x+20, board[m1][m2-1].y+20);move_count++;}
+        else if(board2[m1][m2-1]=='G'){
+         if(board2[m1][m2-2]=='*')  rectangle(board[m1][m2-2].x-20,board[m1][m2-2].y-20,board[m1][m2-2].x+20, board[m1][m2-2].y+20);move_count++;} 
+        
+    }   
+
+
+    else if((m1==0 && m2==1)||(m1==0 && m2==3)||(m1==1 && m2==0)||(m1==1 && m2==2)||(m1==1 && m2==4)|| (m1==2 && m2==1)||(m1==2 && m2==3)||
+            (m1==3 && m2==0)||(m1==3 && m2==2)||(m1==3 && m2==4)|| (m1==4 && m2==1)||(m1==4 && m2==3)){
+
+                if(board2[m1-1][m2]=='*'){ }
+        else if(board2[m1-1][m2]=='G'){
+            if(board2[m1-2][m2]=='*')  rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);move_count++; }   
+
+        if(board2[m1+1][m2]=='*'){  }
+        else if(board2[m1+1][m2]=='G'){
+            if(board2[m1+2][m2]=='*')  rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);move_count++; }  
+
+         if(board2[m1][m2+1]=='*'){ }
+         else if(board2[m1][m2+1]=='G'){
+            if(board2[m1][m2+2]=='*')   rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);move_count++;}      
+          
+        if(board2[m1][m2-1]=='*'){  }
+        else if(board2[m1][m2-1]=='G'){
+         if(board2[m1][m2-2]=='*') rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);move_count++; } 
+
+    }
+    return move_count;
+
+  
+
+}
 
