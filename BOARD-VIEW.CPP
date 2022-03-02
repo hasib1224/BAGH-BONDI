@@ -368,5 +368,4 @@ void tiger_input(){
    }              
 }
 
-
 }
