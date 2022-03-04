@@ -9,16 +9,19 @@ void cordinatew();
 void board_view();
 void goat_input();
 void tiger_scope();
-int tiger_scope_print(int m1,int m2);
+void tiger_scope_print(int m1,int m2);
+
 void tiger_input();
+int tiger_possible_move(int m1,int m2);
+ int tiger_info();
 
 struct cordin{
    int x;
    int y; };
 
 char board2[50][50];
-int  move_count, s_track ,tiger_suc_input, goat_suc_input;
-int total_goat=20;
+int  move_count, total_move, s_track ,tiger_suc_input, goat_suc_input;  //move_count for count a tiger's move
+int total_goat=20, goat_win_flag, tiger_win_flag ;
 
 struct cordin scope_track[8], kill_scope_track[8], goat_track[8], tig_track, board[30][30];
 
@@ -57,18 +60,29 @@ board_view();
       goat_suc_input=0;
 
       while(1){
-         goat_input();    
-         if(goat_suc_input==5) break;
+         goat_input(); 
+   
+         if(goat_suc_input==5){
+            cleardevice();
+            board_view();
+            
+           // goat_win_flag=tiger_info();
+            break; }
       }
 
-      while(1){
-         tiger_scope(); 
-         if(tiger_suc_input==6){
-            break;
-         }
+
+      if( goat_win_flag!=0){
+         while(1){
+            tiger_scope(); 
+            if(tiger_suc_input==6) break;
+         
+         } 
       }
+
 
    }   
+
+
  
 
    getch();
@@ -192,6 +206,12 @@ void board_view(){
          }
       }
 
+
+      goat_win_flag=tiger_info();
+
+
+
+
     /*
     for(int m=0;m<5;m+=1){cout<<"  "<<m;}
    cout<<"\n";          
@@ -231,7 +251,7 @@ void tiger_scope(){
                   cleardevice();
                   board_view();
                    
-                  int g=tiger_scope_print(i,j);
+                  tiger_scope_print(i,j);
                   tiger_input();
                   k=1;
                } 
@@ -246,11 +266,12 @@ void tiger_scope(){
 }          
   
 
-int tiger_scope_print(int m1,int m2){
+ void tiger_scope_print(int m1,int m2){
    setlinestyle(0,0,10);
    setcolor(GREEN);
    cordinatew();
-   s_track=0;move_count=0;
+   s_track=0; //move_count=0;
+
    //for(int q=0;q<=7;q++){scope_track[q].x=0;scope_track[q].y=0;}
 
    //int   move_count=0;
@@ -258,74 +279,74 @@ int tiger_scope_print(int m1,int m2){
    (m1==2 && m2==4)||(m1==3 && m2==1)||(m1==3 && m2==3)|| (m1==4 && m2==0)||(m1==4 && m2==2)||(m1==4 && m2==4)){
 
       if(board2[m1-1][m2+1]=='*'){ rectangle(board[m1-1][m2+1].x-20,board[m1-1][m2+1].y-20,board[m1-1][m2+1].x+20, board[m1-1][m2+1].y+20);
-         scope_track[s_track].x=m1-1; scope_track[s_track].y=m2+1; move_count++; s_track++;}
+         scope_track[s_track].x=m1-1; scope_track[s_track].y=m2+1;  s_track++;}
        else if(board2[m1-1][m2+1]=='G'){
          if(board2[m1-2][m2+2]=='*') { rectangle(board[m1-2][m2+2].x-20,board[m1-2][m2+2].y-20,board[m1-2][m2+2].x+20, board[m1-2][m2+2].y+20);
            kill_scope_track[s_track].x=m1-2; kill_scope_track[s_track].y=m2+2; 
-           goat_track[s_track].x=m1-1; goat_track[s_track].y=m2+1; move_count++; s_track++; }}
+           goat_track[s_track].x=m1-1; goat_track[s_track].y=m2+1; s_track++; }}
 
            
 
         if(board2[m1+1][m2-1]=='*'){ rectangle(board[m1+1][m2-1].x-20,board[m1+1][m2-1].y-20,board[m1+1][m2-1].x+20, board[m1+1][m2-1].y+20);
-        scope_track[s_track].x=m1+1;scope_track[s_track].y=m2-1; move_count++;s_track++;}
+        scope_track[s_track].x=m1+1;scope_track[s_track].y=m2-1; s_track++;}
         else if(board2[m1+1][m2-1]=='G'){
           if(board2[m1+2][m2-2]=='*') {rectangle(board[m1+2][m2-2].x-20,board[m1+2][m2-2].y-20,board[m1+2][m2-2].x+20, board[m1+2][m2-2].y+20);
            kill_scope_track[s_track].x=m1+2; kill_scope_track[s_track].y=m2-2; 
-            goat_track[s_track].x=m1+1; goat_track[s_track].y=m2-1; move_count++; s_track++;}}
+            goat_track[s_track].x=m1+1; goat_track[s_track].y=m2-1; s_track++;}}
 
 
 
         if(board2[m1-1][m2-1]=='*'){ rectangle(board[m1-1][m2-1].x-20,board[m1-1][m2-1].y-20,board[m1-1][m2-1].x+20, board[m1-1][m2-1].y+20);
-         scope_track[s_track].x=m1-1;scope_track[s_track].y=m2-1; move_count++;s_track++;}
+         scope_track[s_track].x=m1-1;scope_track[s_track].y=m2-1; s_track++;}
         else if(board2[m1-1][m2-1]=='G'){
             if(board2[m1-2][m2-2]=='*'){rectangle(board[m1-2][m2-2].x-20,board[m1-2][m2-2].y-20,board[m1-2][m2-2].x+20, board[m1-2][m2-2].y+20);
              kill_scope_track[s_track].x=m1-2; kill_scope_track[s_track].y=m2-2; 
-              goat_track[s_track].x=m1-1; goat_track[s_track].y=m2-1; move_count++; s_track++;}}
+              goat_track[s_track].x=m1-1; goat_track[s_track].y=m2-1;  s_track++;}}
         
 
 
         if(board2[m1+1][m2+1]=='*'){ rectangle(board[m1+1][m2+1].x-20,board[m1+1][m2+1].y-20,board[m1+1][m2+1].x+20, board[m1+1][m2+1].y+20);
-         scope_track[s_track].x=m1+1;scope_track[s_track].y=m2+1; move_count++;s_track++;}
+         scope_track[s_track].x=m1+1;scope_track[s_track].y=m2+1; s_track++;}
         else if(board2[m1+1][m2+1]=='G'){
             if(board2[m1+2][m2+2]=='*') {rectangle(board[m1+2][m2+2].x-20,board[m1+2][m2+2].y-20,board[m1+2][m2+2].x+20, board[m1+2][m2+2].y+20);
              kill_scope_track[s_track].x=m1+2; kill_scope_track[s_track].y=m2+2; 
-              goat_track[s_track].x=m1+1; goat_track[s_track].y=m2+1; move_count++;s_track++;}}
+              goat_track[s_track].x=m1+1; goat_track[s_track].y=m2+1; s_track++;}}
 
 
 
         if(board2[m1-1][m2]=='*'){ rectangle(board[m1-1][m2].x-20,board[m1-1][m2].y-20,board[m1-1][m2].x+20, board[m1-1][m2].y+20);
-         scope_track[s_track].x=m1-1;scope_track[s_track].y=m2; move_count++;s_track++;}
+         scope_track[s_track].x=m1-1;scope_track[s_track].y=m2; s_track++;}
         else if(board2[m1-1][m2]=='G'){
             if(board2[m1-2][m2]=='*') {rectangle(board[m1-2][m2].x-20,board[m1-2][m2].y-20,board[m1-2][m2].x+20, board[m1-2][m2].y+20);
              kill_scope_track[s_track].x=m1-2; kill_scope_track[s_track].y=m2;
-              goat_track[s_track].x=m1-1; goat_track[s_track].y=m2; move_count++;s_track++;}}
+              goat_track[s_track].x=m1-1; goat_track[s_track].y=m2; s_track++;}}
 
 
 
         if(board2[m1+1][m2]=='*'){ rectangle(board[m1+1][m2].x-20,board[m1+1][m2].y-20,board[m1+1][m2].x+20, board[m1+1][m2].y+20);
-         scope_track[s_track].x=m1+1;scope_track[s_track].y=m2; move_count++;s_track++;}
+         scope_track[s_track].x=m1+1;scope_track[s_track].y=m2;  s_track++;}
         else if(board2[m1+1][m2]=='G'){
             if(board2[m1+2][m2]=='*') {rectangle(board[m1+2][m2].x-20,board[m1+2][m2].y-20,board[m1+2][m2].x+20, board[m1+2][m2].y+20);
              kill_scope_track[s_track].x=m1+2; kill_scope_track[s_track].y=m2;
-              goat_track[s_track].x=m1+1; goat_track[s_track].y=m2; move_count++;s_track++;}  }
+              goat_track[s_track].x=m1+1; goat_track[s_track].y=m2;  s_track++;}  }
 
 
 
          if(board2[m1][m2+1]=='*'){ rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);
-          scope_track[s_track].x=m1;scope_track[s_track].y=m2+1; move_count++;s_track++;}
+          scope_track[s_track].x=m1;scope_track[s_track].y=m2+1;  s_track++;}
          else if(board2[m1][m2+1]=='G'){
             if(board2[m1][m2+2]=='*') { rectangle(board[m1][m2+2].x-20,board[m1][m2+2].y-20,board[m1][m2+2].x+20, board[m1][m2+2].y+20);
              kill_scope_track[s_track].x=m1;kill_scope_track[s_track].y=m2+2; 
-              goat_track[s_track].x=m1; goat_track[s_track].y=m2+1; move_count++;s_track++;}}
+              goat_track[s_track].x=m1; goat_track[s_track].y=m2+1;  s_track++;}}
           
 
 
         if(board2[m1][m2-1]=='*'){  rectangle(board[m1][m2-1].x-20,board[m1][m2-1].y-20,board[m1][m2-1].x+20, board[m1][m2-1].y+20);
-         scope_track[s_track].x=m1;scope_track[s_track].y=m2-1; move_count++;s_track++;}
+         scope_track[s_track].x=m1;scope_track[s_track].y=m2-1; s_track++;}
         else if(board2[m1][m2-1]=='G'){
          if(board2[m1][m2-2]=='*') { rectangle(board[m1][m2-2].x-20,board[m1][m2-2].y-20,board[m1][m2-2].x+20, board[m1][m2-2].y+20);
           kill_scope_track[s_track].x=m1; kill_scope_track[s_track].y=m2-2;
-           goat_track[s_track].x=m1; goat_track[s_track].y=m2-1; move_count++;s_track++;}}
+           goat_track[s_track].x=m1; goat_track[s_track].y=m2-1;  s_track++;}}
         
     }   
 
@@ -334,38 +355,39 @@ int tiger_scope_print(int m1,int m2){
             (m1==3 && m2==0)||(m1==3 && m2==2)||(m1==3 && m2==4)|| (m1==4 && m2==1)||(m1==4 && m2==3)){
 
                 if(board2[m1-1][m2]=='*'){ rectangle(board[m1-1][m2].x-20,board[m1-1][m2].y-20,board[m1-1][m2].x+20, board[m1-1][m2].y+20);
-         scope_track[s_track].x=m1-1;scope_track[s_track].y=m2; move_count++;s_track++;}
+         scope_track[s_track].x=m1-1;scope_track[s_track].y=m2;  s_track++;}
         else if(board2[m1-1][m2]=='G'){
             if(board2[m1-2][m2]=='*') { rectangle(board[m1-2][m2].x-20,board[m1-2][m2].y-20,board[m1-2][m2].x+20, board[m1-2][m2].y+20);
             kill_scope_track[s_track].x=m1-2; kill_scope_track[s_track].y=m2;
-             goat_track[s_track].x=m1-1; goat_track[s_track].y=m2; move_count++;s_track++; }   }
+             goat_track[s_track].x=m1-1; goat_track[s_track].y=m2;  s_track++; }   }
            
 
         if(board2[m1+1][m2]=='*'){ rectangle(board[m1+1][m2].x-20,board[m1+1][m2].y-20,board[m1+1][m2].x+20, board[m1+1][m2].y+20);
-         scope_track[s_track].x=m1+1;scope_track[s_track].y=m2; move_count++;s_track++;}
+         scope_track[s_track].x=m1+1;scope_track[s_track].y=m2; s_track++;}
         else if(board2[m1+1][m2]=='G'){
             if(board2[m1+2][m2]=='*') { rectangle(board[m1+2][m2].x-20,board[m1+2][m2].y-20,board[m1+2][m2].x+20, board[m1+2][m2].y+20);
             kill_scope_track[s_track].x=m1+2; kill_scope_track[s_track].y=m2; 
-             goat_track[s_track].x=m1+1; goat_track[s_track].y=m2; move_count++;s_track++;}   }
+             goat_track[s_track].x=m1+1; goat_track[s_track].y=m2;  s_track++;}   }
 
 
          if(board2[m1][m2+1]=='*'){rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);
-         scope_track[s_track].x=m1;scope_track[s_track].y=m2+1; move_count++; s_track++;}
+         scope_track[s_track].x=m1;scope_track[s_track].y=m2+1;  s_track++;}
          else if(board2[m1][m2+1]=='G'){
             if(board2[m1][m2+2]=='*')  { rectangle(board[m1][m2+2].x-20,board[m1][m2+2].y-20,board[m1][m2+2].x+20, board[m1][m2+2].y+20);
             kill_scope_track[s_track].x=m1; kill_scope_track[s_track].y=m2+2;
-             goat_track[s_track].x=m1; goat_track[s_track].y=m2+1; move_count++; s_track++;}   }
+             goat_track[s_track].x=m1; goat_track[s_track].y=m2+1;  s_track++;}   }
 
           
         if(board2[m1][m2-1]=='*'){ rectangle(board[m1][m2-1].x-20,board[m1][m2-1].y-20,board[m1][m2-1].x+20, board[m1][m2-1].y+20);
-         scope_track[s_track].x=m1;scope_track[s_track].y=m2-1; move_count++; s_track++;  }
+         scope_track[s_track].x=m1;scope_track[s_track].y=m2-1;  s_track++;  }
         else if(board2[m1][m2-1]=='G'){
          if(board2[m1][m2-2]=='*')  { rectangle(board[m1][m2-2].x-20,board[m1][m2-2].y-20,board[m1][m2-2].x+20, board[m1][m2-2].y+20);
             kill_scope_track[s_track].x=m1; kill_scope_track[s_track].y=m2-2;
-             goat_track[s_track].x=m1; goat_track[s_track].y=m2-1; move_count++; s_track++;}   }
+             goat_track[s_track].x=m1; goat_track[s_track].y=m2-1;  s_track++;}   }
 
     }
 
+   /*
     for(int i=0;i<s_track;i++){
            cout<<scope_track[i].x<<" "<<scope_track[i].y<<"\n";
         }
@@ -378,11 +400,11 @@ int tiger_scope_print(int m1,int m2){
          for(int j=0;j<5;j++){
            cout<< " " << board2[i][j]<<" ";
              }cout<<"\n"; 
-        } 
+        } */
 
 
 
-    return move_count;
+   
 
 }
 
@@ -448,3 +470,95 @@ void tiger_input(){
 
 
 }
+
+
+
+
+
+int tiger_possible_move(int m1,int m2){ 
+     int   move_count=0;
+     if((m1==0 && m2==0)||(m1==0 && m2==2)||(m1==0 && m2==4)||(m1==1 && m2==1)||(m1==1 && m2==3)|| (m1==2 && m2==0)||(m1==2 && m2==2)||
+     (m1==2 && m2==4)||(m1==3 && m2==1)||(m1==3 && m2==3)|| (m1==4 && m2==0)||(m1==4 && m2==2)||(m1==4 && m2==4)){
+
+        if(board2[m1-1][m2+1]=='*'){  move_count++;}
+        else if(board2[m1-1][m2+1]=='G'){
+            if(board2[m1-2][m2+2]=='*') move_count++;}
+
+        if(board2[m1+1][m2-1]=='*'){ move_count++;}
+        else if(board2[m1+1][m2-1]=='G'){
+            if(board2[m1+2][m2-2]=='*') move_count++;}
+
+        if(board2[m1-1][m2-1]=='*'){ move_count++;}
+        else if(board2[m1-1][m2-1]=='G'){
+            if(board2[m1-2][m2-2]=='*') move_count++;}    
+        
+        if(board2[m1+1][m2+1]=='*'){ move_count++;}
+        else if(board2[m1+1][m2+1]=='G'){
+            if(board2[m1+2][m2+2]=='*') move_count++;}
+
+        if(board2[m1-1][m2]=='*'){ move_count++;}
+        else if(board2[m1-1][m2]=='G'){
+            if(board2[m1-2][m2]=='*') move_count++;}   
+
+
+        if(board2[m1+1][m2]=='*'){ move_count++;}
+        else if(board2[m1+1][m2]=='G'){
+            if(board2[m1+2][m2]=='*') move_count++;}  
+
+         if(board2[m1][m2+1]=='*'){move_count++;}
+         else if(board2[m1][m2+1]=='G'){
+            if(board2[m1][m2+2]=='*') move_count++;}      
+          
+        if(board2[m1][m2-1]=='*'){ move_count++;}
+        else if(board2[m1][m2-1]=='G'){
+         if(board2[m1][m2-2]=='*') move_count++;} 
+        
+    }   
+
+
+    else if((m1==0 && m2==1)||(m1==0 && m2==3)||(m1==1 && m2==0)||(m1==1 && m2==2)||(m1==1 && m2==4)|| (m1==2 && m2==1)||(m1==2 && m2==3)||
+            (m1==3 && m2==0)||(m1==3 && m2==2)||(m1==3 && m2==4)|| (m1==4 && m2==1)||(m1==4 && m2==3)){
+
+                if(board2[m1-1][m2]=='*'){move_count++;}
+        else if(board2[m1-1][m2]=='G'){
+            if(board2[m1-2][m2]=='*') move_count++;}   
+
+        if(board2[m1+1][m2]=='*'){ move_count++;}
+        else if(board2[m1+1][m2]=='G'){
+            if(board2[m1+2][m2]=='*') move_count++;}  
+
+         if(board2[m1][m2+1]=='*'){ move_count++;}
+         else if(board2[m1][m2+1]=='G'){
+            if(board2[m1][m2+2]=='*') move_count++;}      
+          
+        if(board2[m1][m2-1]=='*'){ move_count++;}
+        else if(board2[m1][m2-1]=='G'){
+         if(board2[m1][m2-2]=='*') move_count++;} 
+
+    }
+
+
+    return move_count;
+
+  }
+
+
+
+
+   int tiger_info(){
+       int temp=0;
+       for(int i=0;i<5;i++){
+             for(int j=0;j<5;j++){ 
+                  if(board2[i][j]=='T'){
+                      
+                      temp=tiger_possible_move(i,j); cout<<temp;
+                      total_move=total_move + temp;
+                      if(temp==0) {  setlinestyle(0,0,10); setcolor(RED);  rectangle(board[i][j].x-28,board[i][j].y-28,board[i][j].x+28, board[i][j].y+28);}
+                    }
+                }
+        }
+        return total_move;
+   }    
+
+
+   
