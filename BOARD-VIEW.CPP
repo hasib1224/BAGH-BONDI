@@ -18,7 +18,7 @@ struct cordin{
 
 char board2[50][50];
 int total_goat=20, move_count, s_track;
-struct cordin scope_track[7],tig_track,board[30][30];
+struct cordin scope_track[8],tig_track,board[30][30];
 
  
 //...MAIN FUNCTION.....
