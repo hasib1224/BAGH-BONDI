@@ -17,7 +17,7 @@ struct cordin{
    int y; };
 
 char board2[50][50];
-int  move_count, s_track;
+int  move_count, s_track ,tiger_suc_input, goat_suc_input;
 int total_goat=20;
 
 struct cordin scope_track[8], kill_scope_track[8], goat_track[8], tig_track, board[30][30];
@@ -36,7 +36,7 @@ for(int i=0;i<5;i++){
 }
     
 board2[0][0]='T';
-board2[2][2]='T';
+board2[0][4]='T';
 board2[4][0]='T';
 board2[4][4]='T';
 
@@ -49,22 +49,26 @@ board2[4][4]='T';
  cordinatew();
 //........DISPLAY THE BOARD................
 board_view();
-   
 
 
-//POINT cursor;
-//goat_input();
-cleardevice();
-board_view();
-
-
+//...UNLIMITED SUCCESFUL INPUT FOR GOAT AND TIGER....
+   while(1){
+      tiger_suc_input=0;
+      goat_suc_input=0;
 
       while(1){
-         goat_input();
-        // cordinatew();
-         tiger_scope();
-         
+         goat_input();    
+         if(goat_suc_input==5) break;
       }
+
+      while(1){
+         tiger_scope(); 
+         if(tiger_suc_input==6){
+            break;
+         }
+      }
+
+   }   
  
 
    getch();
@@ -128,8 +132,9 @@ while(1){
                       readimagefile("GOAT.jpg",board[i][j].x-20,board[i][j].y-20,board[i][j].x+20, board[i][j].y+20);
                       //total_goat--;
                       board2[i][j]='G';
+                      goat_suc_input=5;  //goat input successfully
                       k=1;break;
-                      } 
+                     } 
                   }
                }
          }//return k;
@@ -221,20 +226,20 @@ void tiger_scope(){
             if((x>board[i][j].x-20 && x<board[i][j].x+20) && (y>board[i][j].y-20 && y<board[i][j].y+20)){
                 if(board2[i][j]=='T'){
 
-                   tig_track.x=i;
-                   tig_track.y=j;
-                   cleardevice();
-                   board_view();
+                  tig_track.x=i;
+                  tig_track.y=j;
+                  cleardevice();
+                  board_view();
                    
-                   int g=tiger_scope_print(i,j);
-                   tiger_input();
+                  int g=tiger_scope_print(i,j);
+                  tiger_input();
                   k=1;
                } 
             }
          }
       }//return k;
-      if(k==1) break;
-   }              
+    //  if(k==1) break;
+   }  if(k==1) break;             
 }
 
   
@@ -404,13 +409,14 @@ void tiger_input(){
                 if(board2[i][j]=='*'){
                    for( q=0;q<=s_track;q++){
                         if(i==scope_track[q].x && j==scope_track[q].y){
-                           //readimagefile("TIGER.jpg",board[i][j].x-20,board[i][j].y-20,board[i][j].x+20, board[i][j].y+20);
+
                            board2[i][j]='T';
                            board2[tig_track.x][tig_track.y]='*';
                            //cout<<tig_track.x<<" "<<tig_track.y;
                            cleardevice();
                            board_view();
                            k=1;
+                           tiger_suc_input=6; //tiger succes input
                            break;
                           
                           // break;
@@ -423,6 +429,7 @@ void tiger_input(){
                            cleardevice();
                            board_view();
                            k=1;
+                           tiger_suc_input=6; //tiger succes input
                            break;
 
                         }
