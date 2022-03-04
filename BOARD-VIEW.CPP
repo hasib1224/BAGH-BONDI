@@ -40,7 +40,7 @@ board2[0][4]='T';
 board2[4][0]='T';
 board2[4][4]='T';
 
-    initwindow(1600,800,"MENU",0,0,false,true);   
+   initwindow(1600,800,"MENU",0,0,false,true);   
 
    setfillstyle(SOLID_FILL,CYAN);
    floodfill(79,49,CYAN);
@@ -151,7 +151,7 @@ void board_view(){
    cordinatew();
 
   
-    setfillstyle(SOLID_FILL,CYAN);
+   setfillstyle(SOLID_FILL,CYAN);
    floodfill(79,49,CYAN);
 
    //FOR BOARD LINE COLOR
