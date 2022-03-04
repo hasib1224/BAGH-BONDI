@@ -34,15 +34,14 @@ for(int i=0;i<5;i++){
 }
     
 board2[0][0]='T';
-board2[0][4]='T';
+board2[2][2]='T';
 board2[4][0]='T';
 board2[4][4]='T';
 
-   //initwindow(1600,800,"MENU",0,0,false,true);    
-   
-   //FOR BACKGROUND DISPLAY
-   ///setfillstyle(SOLID_FILL,CYAN);
-  // floodfill(79,49,CYAN);
+    initwindow(1600,800,"MENU",0,0,false,true);   
+
+   setfillstyle(SOLID_FILL,CYAN);
+   floodfill(79,49,CYAN);
      
 //........CO-ORDINATE ASSIGNING............
  cordinatew();
@@ -56,42 +55,10 @@ goat_input();
 cleardevice();
 board_view();
 
-/*/extraaaaaaaaaaaa
-int k = 0;
-POINT cursor;
-int x=0,y=0;
 
-while(1){
-   cordinatew();
-   if(GetAsyncKeyState(VK_LBUTTON)){
-      GetCursorPos(&cursor);
-      x=cursor.x;
-      y=cursor.y-25;
-
-      for(int i=0;i<5;i++){
-        for(int j=0;j<5;j++){
-            if((x>board[i][j].x-20 && x<board[i][j].x+20) && (y>board[i][j].y-20 && y<board[i][j].y+20)){
-                if(board2[i][j]=='T'){
-                   cleardevice();
-                   board_view();
-                   tig_track.x=i;
-                   tig_track.y=j;
-                   tiger_scope_print(i,j);
-                 // tiger_input();
-                  k=1;
-               } 
-            }
-         }
-      }//return k;
-      //if(k==1) break;
-
-      tiger_input();
-   }
-}
-*///extraaaaaaaaaaa
 
       while(1){
-         cordinatew();
+        // cordinatew();
          tiger_scope();
          
       }
@@ -172,12 +139,11 @@ while(1){
           
 
 void board_view(){
+   cordinatew();
 
-   initwindow(1600,800,"MENU",0,0,false,true);   
-
-   setfillstyle(SOLID_FILL,CYAN);
+  
+    setfillstyle(SOLID_FILL,CYAN);
    floodfill(79,49,CYAN);
-   
 
    //FOR BOARD LINE COLOR
    setcolor(BLACK);     
@@ -206,7 +172,7 @@ void board_view(){
    line(500,400,800,700);
 
 
-   
+    cordinatew();
     for(int i=0;i<5;i++){
        for(int j=0;j<5;j++){ 
            if(board2[i][j]=='T'){
@@ -216,6 +182,18 @@ void board_view(){
             }
          }
       }
+
+    /*
+    for(int m=0;m<5;m+=1){cout<<"  "<<m;}
+   cout<<"\n";          
+     for(int i=0;i<5;i++){
+        cout<<i;
+         for(int j=0;j<5;j++){
+           cout<< " " << board2[i][j]<<" ";
+             }cout<<"\n"; 
+        } */
+        
+
 
 
 }
@@ -232,17 +210,19 @@ void tiger_scope(){
    if(GetAsyncKeyState(VK_LBUTTON)){
       GetCursorPos(&cursor);
       x=cursor.x;
-      y=cursor.y-25;
+      y=cursor.y;
 
       for(int i=0;i<5;i++){
         for(int j=0;j<5;j++){
             if((x>board[i][j].x-20 && x<board[i][j].x+20) && (y>board[i][j].y-20 && y<board[i][j].y+20)){
                 if(board2[i][j]=='T'){
-                   cleardevice();
-                   board_view();
+
                    tig_track.x=i;
                    tig_track.y=j;
-                   tiger_scope_print(i,j);
+                   cleardevice();
+                   board_view();
+                   
+                   int g=tiger_scope_print(i,j);
                    tiger_input();
                   k=1;
                } 
@@ -261,7 +241,7 @@ int tiger_scope_print(int m1,int m2){
    setlinestyle(0,0,10);
    setcolor(GREEN);
    cordinatew();
-   s_track=0;
+   s_track=0;move_count=0;
    //for(int q=0;q<=7;q++){scope_track[q].x=0;scope_track[q].y=0;}
 
    //int   move_count=0;
@@ -272,7 +252,7 @@ int tiger_scope_print(int m1,int m2){
          scope_track[s_track].x=m1-1;scope_track[s_track].y=m2+1; move_count++;s_track++;}
        else if(board2[m1-1][m2+1]=='G'){
          if(board2[m1-2][m2+2]=='*') { rectangle(board[m1-2][m2+2].x-20,board[m1-2][m2+2].y-20,board[m1-2][m2+2].x+20, board[m1-2][m2+2].y+20);
-           scope_track[s_track].x=m1-2;scope_track[s_track].y=m2+2; move_count++;s_track++;}}
+           scope_track[s_track].x=m1-2;scope_track[s_track].y=m2+2; move_count++; s_track++; }}
 
            
 
@@ -364,6 +344,23 @@ int tiger_scope_print(int m1,int m2){
             scope_track[s_track].x=m1;scope_track[s_track].y=m2-2; move_count++; s_track++;}   }
 
     }
+
+    for(int i=0;i<s_track;i++){
+           cout<<scope_track[i].x<<" "<<scope_track[i].y<<"\n";
+        }
+        cout<<"........";
+
+          for(int m=0;m<5;m+=1){cout<<"  "<<m;}
+   cout<<"\n";          
+     for(int i=0;i<5;i++){
+        cout<<i;
+         for(int j=0;j<5;j++){
+           cout<< " " << board2[i][j]<<" ";
+             }cout<<"\n"; 
+        } 
+
+
+
     return move_count;
 
 }
@@ -375,7 +372,7 @@ void tiger_input(){
    cordinatew();
    int k=0;
    POINT cursor;
-   int x,y,q=s_track;
+   int x,y,q;
    
 
    while(1){
@@ -389,13 +386,16 @@ void tiger_input(){
         for(int j=0;j<5;j++){
             if((x>board[i][j].x-20 && x<board[i][j].x+20) && (y>board[i][j].y-20 && y<board[i][j].y+20)){
                 if(board2[i][j]=='*'){
-                   for( q=0;q<=7;q++){
+                   for( q=0;q<=s_track;q++){
                         if(i==scope_track[q].x && j==scope_track[q].y){
                            //readimagefile("TIGER.jpg",board[i][j].x-20,board[i][j].y-20,board[i][j].x+20, board[i][j].y+20);
                            board2[i][j]='T';
                            board2[tig_track.x][tig_track.y]='*';
-                           tig_track.x=0;
-                           tig_track.y=0;
+
+                           cout<<tig_track.x<<" "<<tig_track.y;
+
+                          // tig_track.x=0;
+                          // tig_track.y=0;
                            cleardevice();
                            board_view();
                            k=1;
