@@ -24,8 +24,9 @@ int tiger_info();
 void tiger_win_screen();
 void goat_win_screen();
 
-
+int menu();
 void two_player_mode();
+int ai_mode();
 
 struct cordin{
    int x;
@@ -34,6 +35,7 @@ struct cordin{
 char board2[50][50];
 int  move_count, total_move, s_track ,tiger_suc_input, goat_suc_input;  //move_count for count a tiger's move
 int total_goat=20, goat_win_flag, tiger_win_flag , killed_goat;
+int mode_start, back_menu_flag;;
 
 struct cordin scope_track[8], g_scope_track[8], kill_scope_track[8], goat_track[8], tig_track, goat_ind, board[30][30]; 
 // goat_track[] is to track the possible move of tiger over goat
@@ -69,17 +71,36 @@ board2[4][4]='T';
 //........CO-ORDINATE ASSIGNING............
  cordinatew();
 //........DISPLAY THE BOARD................
-board_view();
+//board_view();
+menu();
 
 
 //...UNLIMITED SUCCESFUL INPUT FOR GOAT AND TIGER....
-two_player_mode();
+
+
+
+
+while(1){
+    if(mode_start==1){
+       two_player_mode();
+       menu();
+    }
+
+    else if(mode_start==2){
+        ai_mode();
+        if(back_menu_flag==1) menu();
+     }
+    
+ } 
+
+
+
 
 
  
 
    getch();
-   closegraph();
+   //closegraph();
    return 0;
 
 }
@@ -767,9 +788,10 @@ void tiger_win_screen(){
    cleardevice();
    settextstyle(8,0,5);
    setcolor(WHITE);
-
-   outtextxy(650,200,"TIGER WIN THE MATCH!!!!");
+   outtextxy(540,220,"CONGRATULATIONS!!");
+   outtextxy(520,270,"TIGER WIN THE MATCH !!");
    delay(7000);
+  
 
 }
 
@@ -779,8 +801,10 @@ void goat_win_screen(){
    settextstyle(8,0,5);
    setcolor(WHITE);
 
-   outtextxy(650,200,"GOAT WIN THE MATCH!!!!");
+   outtextxy(540,220,"CONGRATULATIONS!!");
+   outtextxy(520,270,"GOAT WIN THE MATCH !!");
    delay(7000);
+  
 
 }
 
@@ -803,6 +827,8 @@ void welcome(){
 
 
 void two_player_mode(){
+   cleardevice();
+   board_view();
 
    while(1){
       tiger_suc_input=0;
@@ -854,6 +880,106 @@ void two_player_mode(){
 
 }
 
+int menu(){
+
+    setfillstyle(SOLID_FILL,RED);
+    floodfill(79,49,RED);
+     
+    readimagefile("COVER.jpg",2,2,1590, 790);
+
+   //....UPPER RECTANGLE AND TEXT...
+    setcolor(BLUE);
+    rectangle(580,245,1055,310);
+    setfillstyle(SOLID_FILL, BLUE);
+    floodfill(581, 246, BLUE);
+
+    settextstyle(10,0,5);
+    setcolor(WHITE);
+    outtextxy(590,260,"PLAY WITH  FRIENDS");
+
+    //....LOWER RECTANGLE AND TEXT...
+    setcolor(BLUE);
+    rectangle(580,385,1055,450);
+    setfillstyle(SOLID_FILL, BLUE);
+    floodfill(581, 386, BLUE);
+
+    settextstyle(10,0,5);
+    setcolor(WHITE);
+    outtextxy(590,400,"PLAY WITH COMPUTER");
+   
+
+    while(1){
+        POINT cursor;
+        int x,y;
+        while(1){
+            if(GetAsyncKeyState(VK_LBUTTON)){
+                GetCursorPos(&cursor);
+                x=cursor.x;
+                y=cursor.y-20;
+                if((x>580 && x<1055) && (y>245 && y<310)){
+                    mode_start=1;
+                    break;                   
+                }
+                if((x>580 && x<1055) && (y>385 && y<450)){     
+                   mode_start=2;
+                   break;
+
+                }
+            }
+        }
+        if(mode_start) break;
+    }
+    return mode_start;
+
+   // getch();
+   // closegraph();
+}
+
+
+
+
+int ai_mode(){
+    cleardevice();           
+    readimagefile("UNDER_DEVELOP.jpg",500,200,1100, 500);
+    settextstyle(8,0,3);
+    setcolor(WHITE);
+    outtextxy(670,530,"UNDER DEVELOPING....");
+
+    setcolor(BLUE);
+    rectangle(1255,90,1500,145);
+    setfillstyle(SOLID_FILL, BLUE);
+    floodfill(1256, 91, BLUE);
+
+    settextstyle(10,0,4);
+    setcolor(WHITE);
+    outtextxy(1260,100,"BACK TO MENU");
+
+
+    
+       while(1){
+        POINT cursor;
+        int x,y;
+        while(1){
+            if(GetAsyncKeyState(VK_LBUTTON)){
+                GetCursorPos(&cursor);
+                x=cursor.x;
+                y=cursor.y-20;
+                if((x>1255 && x<1500) && (y>90 && y<145)){
+                    back_menu_flag=1;
+                    break;
+                                     
+                }
+            }
+        }
+        if(back_menu_flag) break;
+    }
+    return back_menu_flag;
+
+
+    getch();
+    //closegraph();
+
+}
 
 
 
