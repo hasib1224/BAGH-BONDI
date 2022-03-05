@@ -808,6 +808,7 @@ void tiger_win_screen(){
 
 }
 
+
 void goat_win_screen(){
 
    cleardevice();
