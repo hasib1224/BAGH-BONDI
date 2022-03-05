@@ -62,8 +62,8 @@ board2[4][0]='T';
 board2[4][4]='T';
 
    initwindow(1600,800,"MENU",0,0,false,true);   
-   setfillstyle(SOLID_FILL,CYAN);
-   floodfill(79,49,CYAN);
+  // setfillstyle(SOLID_FILL,CYAN);
+  // floodfill(79,49,CYAN);
 
    welcome();
    cleardevice();
@@ -821,7 +821,7 @@ void welcome(){
     settextstyle(8,0,3);
     outtextxy(650,430,"WAIT A SECCOND.....");
     
-    delay(700);
+    delay(7000);
 
 }
 
