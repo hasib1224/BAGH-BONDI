@@ -114,6 +114,7 @@ void cordinatew(){
    board[4][0].x=500; board[4][0].y=700;
    board[4][1].x=650; board[4][1].y=700;
    board[4][2].x=800; board[4][2].y=700;
+   board[4][3].x=950; board[4][3].y=700;
    board[4][4].x=1100; board[4][4].y=700;
 
    }
