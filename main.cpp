@@ -517,7 +517,7 @@ int TigerEvaluatePosition()
     if (GoatWinCheck(board))
         return -INF;
 
-    return (1000 * aiDeadGoats - 300 * GhostGoats() + 200 * PossibleCaptures() - 500 * TigersTrapped(board) + 50 * cornersOccupied);
+    return (1000 * aiDeadGoats - 300 * GhostGoats() + 200 * PossibleCaptures() - 500 * TigersTrapped(board) );
 }
 
 int GoatEvaluatePosition(int depth)
@@ -572,6 +572,8 @@ int AI::GhostGoats()
 
     //........................
 }
+
+// int canCapture(){..........  }
 
 
 
