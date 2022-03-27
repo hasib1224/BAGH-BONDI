@@ -345,3 +345,236 @@ void kill_goat(){
 
 
 
+//..............for AI METHOD............NEWLY ADDED...........
+
+
+
+void GenerateMoveList(int & counter, Move move[])
+{
+    counter = 0;
+
+    //for efficiency of ab pruning
+    int replaceCounter = 0;
+    int initialPossibleCaptures = PossibleCaptures();
+    int tempTigerPos;
+    int a;
+
+    //for tiger
+    if (aiTurn == Tiger)
+    {
+        //capture conditions
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                int x = aiTigerPos[i];
+                int y = direction[j];
+
+                if (x+2*y > 0 && x+2*y < 26)
+                {
+                    if (tigerPlayer->CanCapture(board, x+2*y, x))
+                    {
+                        move[counter].from = x;
+                        move[counter].to = x+2*y;
+                        move[counter].type = TIGER_CAPTURE;
+                        counter++;
+                    }
+                }
+
+                if (x-2*y > 0 && x-2*y < 26)
+                {
+                    if (tigerPlayer->CanCapture(board, x-2*y, x))
+                    {
+                        move[counter].from = x;
+                        move[counter].to = x-2*y;
+                        move[counter].type = TIGER_CAPTURE;
+                        counter++;
+                    }
+                }
+            }
+        }
+
+        replaceCounter = counter;//to avoid replacing the capture moves.
+
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                int x = aiTigerPos[i];
+                int y = direction[j];
+
+                if (x+y > 0 && x+y < 26)
+                {
+                    if (tigerPlayer->IsMovable(board, x+y, x))
+                    {
+                        move[counter].from = x;
+                        move[counter].to = x+y;
+                        move[counter].type = TIGER_MOVE;
+
+                        //for efficiency of ab pruning
+                        board->point[move[counter].to].SetState(T);
+                        board->point[move[counter].from].SetState(N);
+
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (aiTigerPos[j] == move[counter].from)
+                            {
+                                aiTigerPos[j] = move[counter].to;
+                                tempTigerPos = j;
+                                break;
+                            }
+                        }
+
+                        a = PossibleCaptures();
+
+                        board->point[move[counter].to].SetState(N);
+                        board->point[move[counter].from].SetState(T);
+                        aiTigerPos[tempTigerPos] = move[counter].from;
+
+                        if (a > initialPossibleCaptures)
+                        {
+                            Move temp = move[replaceCounter];
+                            move[replaceCounter] = move[counter];
+                            move[counter] = temp;
+
+                            replaceCounter++;
+                        }
+                        counter++;
+                    }
+                }
+
+                if (x-y > 0 && x-y < 26)
+                {
+                    if (tigerPlayer->IsMovable(board, x-y, x))
+                    {
+                        move[counter].from = x;
+                        move[counter].to = x-y;
+                        move[counter].type = TIGER_MOVE;
+
+                        //for efficiency of ab pruning
+                        board->point[move[counter].to].SetState(T);
+                        board->point[move[counter].from].SetState(N);
+
+                        for (int j = 0; j < 4; j++)
+                        {
+                            if (aiTigerPos[j] == move[counter].from)
+                            {
+                                aiTigerPos[j] = move[counter].to;
+                                tempTigerPos = j;
+                                break;
+                            }
+                        }
+
+                        a = PossibleCaptures();
+
+                        board->point[move[counter].to].SetState(N);
+                        board->point[move[counter].from].SetState(T);
+                        aiTigerPos[tempTigerPos] = move[counter].from;
+
+                        if (a > initialPossibleCaptures)
+                        {
+                            Move temp = move[replaceCounter];
+                            move[replaceCounter] = move[counter];
+                            move[counter] = temp;
+
+                            replaceCounter++;
+                        }
+                        counter++;
+                    }
+                }
+            }
+        }
+    }  
+
+  //................GOAT WILL BE ADDED ............
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+int TigerEvaluatePosition()
+{
+    if (TigerWinCheck())
+        return +INF;
+    if (GoatWinCheck(board))
+        return -INF;
+
+    return (1000 * aiDeadGoats - 300 * GhostGoats() + 200 * PossibleCaptures() - 500 * TigersTrapped(board) + 50 * cornersOccupied);
+}
+
+int GoatEvaluatePosition(int depth)
+{
+    if (TigerWinCheck())
+        return -INF;
+    if (GoatWinCheck(board))
+        return +INF - depth;
+
+    return -(1000 * aiDeadGoats - 300*GhostGoats() + 100 * PossibleCaptures() - 200 * TigersTrapped(board) + depth);
+}
+
+bool TigerWinCheck()
+{
+    if (aiDeadGoats == 5)
+    {
+        return true;
+    }
+    return false;
+}
+
+bool GoatWinCheck(Board * b)
+{
+    if (!tigerPlayer->CanTigersMove(aiTigerPos, b))
+    {
+        return true;
+    }
+    return false;
+}
+
+
+
+
+int PossibleCaptures()
+{
+    int possibleCaptureNumber = 0;
+
+    //.............................
+        
+}
+
+
+int TigersTrapped(Board * brd)
+{
+
+    //................
+}
+
+int AI::GhostGoats()
+{
+
+
+    //........................
+}
+
+
+
+
+
+
