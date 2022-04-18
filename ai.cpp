@@ -20,17 +20,22 @@ int generate_move_type ( int counter, struct Move ai_move[21] );
 int  ai_tiger_move_type( int row, int col, int counter, struct Move ai_move[21] );
 int ai_goat_move_type(int row, int col, int counter, struct Move ai_move[21]);
 int ai_goat_minimax(int depth, int alpha, int beta);
+
 int ai_tiger_position_evaluate();
 int ai_goat_position_evaluate();
+
 void ai_tiger_move( int counter, struct Move ai_move[21]);
 void reverse_ai_tiger_move( int counter, struct Move ai_move[21]);
 void ai_tigers_kill_move( int counter, struct Move ai_move[21]);
 void reverse_ai_tigers_kill_move(  int counter, struct Move ai_move[21] );
+
 bool ai_tiger_win();
 bool ai_goat_win();
+
 int ghost_goats();
 int possible_captures();
 int trapped_tigers();
+
 void ai_goat_place(  int counter, struct Move ai_move[21] );
 void reverse_ai_goat_place( int counter, struct Move ai_move[21]);
 void ai_goat_move(  int counter, struct Move ai_move[21]);
@@ -805,14 +810,18 @@ int ai_goat_move_type(int row, int col, int counter, struct Move ai_move[21]){
 
 
 int ai_goat_minimax(int depth, int alpha, int beta){
+  
 
     
    
     int stat_value = ai_goat_position_evaluate();
+    // cout<<stat_value;
 
     if(depth == highest_search_depth || stat_value == infinity || stat_value == (-infinity)){ 
+       // cout<< stat_value ;
         return stat_value ;
     }
+      
 
    
     
@@ -822,12 +831,13 @@ int ai_goat_minimax(int depth, int alpha, int beta){
     counter = generate_move_type ( counter, ai_move); 
     
     
+    
 
     int val;
 
     for(int i=0; i<counter;i++){
 
-       // cout<<"minmax"<<depth<<" "<<i<<" "<<ai_move[i].type<<" ";
+       cout<<"minmax"<<depth<<" "<<i<<" "<<ai_move[i].type<<" ";
         
        switch (ai_move[i].type){
 
@@ -835,7 +845,7 @@ int ai_goat_minimax(int depth, int alpha, int beta){
            
                 ai_tiger_move( i,  ai_move );
                 
-               val = ai_goat_minimax(depth+1, alpha, beta);  
+               val = ai_goat_minimax( depth+1, alpha, beta);  
 
                 if (val < beta){
                     beta = val;
@@ -938,8 +948,11 @@ int ai_goat_position_evaluate(){
     
     if (ai_tiger_win())
         return -infinity;
-    if (ai_goat_win(  ))
+
+    if (ai_goat_win(  )){
+       
         return +infinity;
+    }
 
     return (-1000 * ai_killed_goat + 300 * ghost_goats() - 200 * possible_captures() + 500 * trapped_tigers() );
     //cout<<"dhukse";
@@ -949,11 +962,12 @@ int ai_goat_position_evaluate(){
 
 
 
-void ai_tiger_move( int counter, struct Move ai_move[21]){
+void ai_tiger_move(  int counter, struct Move ai_move[21]){
 
     ai_board [ai_move[counter].to[0]] [ai_move[counter].to[1]] = 'T';
     ai_board [ai_move[counter].from[0]] [ai_move[counter].from[1]] = '*';
     ai_turn = "GOAT";
+    
 
 }
 
@@ -1014,6 +1028,7 @@ bool ai_tiger_win(){
 bool ai_goat_win(){
 
     if( trapped_tigers()==4){
+        
         return true;
     }
     else return false;
@@ -1200,6 +1215,8 @@ int trapped_tigers(){
              if((m1==0 && m2==0)||(m1==0 && m2==2)||(m1==0 && m2==4)||(m1==1 && m2==1)||(m1==1 && m2==3)|| (m1==2 && m2==0)||(m1==2 && m2==2)||
                  (m1==2 && m2==4)||(m1==3 && m2==1)||(m1==3 && m2==3)|| (m1==4 && m2==0)||(m1==4 && m2==2)||(m1==4 && m2==4)){
 
+                    
+
                     if( ai_board[m1-1][m2+1]=='*'){
                         move_counter++;
                     }
@@ -1286,11 +1303,12 @@ int trapped_tigers(){
                     } 
 
                 }
-            }
-            if(move_counter==0){
-                trapped_tiger_num++;
-            }
 
+                if(move_counter==0){
+                    trapped_tiger_num++;
+                }
+
+            }
         }
 
     }
@@ -1404,8 +1422,6 @@ void ai_kill_goat(){
 
           else tiger_move();
        }
-
-  
 
 }
 
