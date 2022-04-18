@@ -932,18 +932,6 @@ int ai_goat_minimax(int depth, int alpha, int beta){
 
 
 
-
-int ai_tiger_position_evaluate(){ 
-    
-    if (ai_tiger_win())
-        return +infinity;
-    if (ai_goat_win( ))
-        return -infinity;
-
-    return (1000 * ai_killed_goat - 300 * ghost_goats() + 200 * possible_captures() - 500 * trapped_tigers() );
-
-}
-
 int ai_goat_position_evaluate(){ 
     
     if (ai_tiger_win())
