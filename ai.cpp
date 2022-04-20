@@ -119,22 +119,9 @@ int main(){
             cout<<"CONGRATULATIONS!! TIGER WIN THE MATCH!!!"; 
             break;
         }
-            
-        // cout<<endl<<"g_count"<<g_count<<endl;
-        // cout<<"ai_killed_goat"<<ai_killed_goat<<endl;
-            
-           
+                         
     }
        
-        
-        
-    
-        
-    //break;
-
-    
-
-
 
 }
 
