@@ -156,15 +156,6 @@ void ai_tiger_input(){
 
 void print_board(){ 
 
-//    for(int m=0;m<5;m+=1){ cout<<"  "<<m;}
-//    cout<<"\n";          
-//     for(int i=0;i<5;i++){
-//         cout<<i;
-//         for(int j=0;j<5;j++){
-//            cout<<" "<<board[i][j]<<" ";
-//         }cout<<"\n"; 
-//     }
-
 for(int m=0;m<5;m+=1){ cout<<"  "<<m;}
    cout<<"\n";          
     for(int i=0;i<5;i++){
@@ -436,13 +427,6 @@ void  ai_kill_goat(){
 
 
 int generate_move_type ( int counter, struct Move ai_move[21] ){
-
-
-    // for(int i=0;i<5;i++){
-    //     for(int j=0;j<5;j++){
-    //         ai_board[i][j]=board[i][j];
-    //     }
-    // }
 
     if(ai_turn=="TIGER"){
 
