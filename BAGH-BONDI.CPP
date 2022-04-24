@@ -84,7 +84,7 @@ int main(){
 
 
 
-  //....... CO-ORDINATE ASSIGNING...,....
+//....... CO-ORDINATE ASSIGNING...,....
 void cordinatew(){
 
    board[0][0].x=500; board[0][0].y=100;
@@ -119,7 +119,7 @@ void cordinatew(){
 
    }
 
-  //...GOAT INPUT........
+//...GOAT INPUT........
 void goat_input(){
    POINT cursor;
    int x,y;
@@ -972,6 +972,7 @@ void welcome(){
 
 //................................TWO PLAYER MODE...................
 void two_player_mode(){
+   
    cleardevice();
    board_view();
 
