@@ -91,6 +91,7 @@ int main(){
         ai_turn="GOAT";
         
         value = ai_goat_minimax(0, -infinity, +infinity);
+        //cout<<"value"<<value;
 
         if(move_from[0]==999||move_from[1]==999){
             ai_board[ move_to[0] ] [ move_to[1] ]='G';
@@ -119,9 +120,22 @@ int main(){
             cout<<"CONGRATULATIONS!! TIGER WIN THE MATCH!!!"; 
             break;
         }
-                         
+            
+        // cout<<endl<<"g_count"<<g_count<<endl;
+        // cout<<"ai_killed_goat"<<ai_killed_goat<<endl;
+            
+           
     }
        
+        
+        
+    
+        
+    //break;
+
+    
+
+
 
 }
 
@@ -155,6 +169,15 @@ void ai_tiger_input(){
 
 
 void print_board(){ 
+
+//    for(int m=0;m<5;m+=1){ cout<<"  "<<m;}
+//    cout<<"\n";          
+//     for(int i=0;i<5;i++){
+//         cout<<i;
+//         for(int j=0;j<5;j++){
+//            cout<<" "<<board[i][j]<<" ";
+//         }cout<<"\n"; 
+//     }
 
 for(int m=0;m<5;m+=1){ cout<<"  "<<m;}
    cout<<"\n";          
@@ -427,6 +450,13 @@ void  ai_kill_goat(){
 
 
 int generate_move_type ( int counter, struct Move ai_move[21] ){
+
+
+    // for(int i=0;i<5;i++){
+    //     for(int j=0;j<5;j++){
+    //         ai_board[i][j]=board[i][j];
+    //     }
+    // }
 
     if(ai_turn=="TIGER"){
 
@@ -800,28 +830,20 @@ int ai_goat_move_type(int row, int col, int counter, struct Move ai_move[21]){
 
 int ai_goat_minimax(int depth, int alpha, int beta){
   
-
-    
-   
     int stat_value = ai_goat_position_evaluate();
-    // cout<<stat_value;
 
     if(depth == highest_search_depth || stat_value == infinity || stat_value == (-infinity)){ 
-       // cout<< stat_value ;
+
         return stat_value ;
     }
       
 
-   
-    
 
     int counter=0;
     struct Move ai_move[21];
     counter = generate_move_type ( counter, ai_move); 
     
     
-    
-
     int val;
 
     for(int i=0; i<counter;i++){
@@ -1066,7 +1088,7 @@ int ghost_goats(){
                     }  
 
     
-                    if(ai_board[i][j+1]=='G' && board[i][j+2]=='G'){
+                    if(ai_board[i][j+1]=='G' && ai_board[i][j+2]=='G'){
                      ghost_goats++;
                     }      
           
@@ -1079,20 +1101,20 @@ int ghost_goats(){
                 else if((i==0 && j==1)||(i==0 && j==3)||(i==1 && j==0)||(i==1 && j==2)||(i==1 && j==4)|| (i==2 && j==1)||(i==2 && j==3)||
                     (i==3 && j==0)||(i==3 && j==2)||(i==3 && j==4)|| (i==4 && j==1)||(i==4 && j==3)){
     
-                    if(board[i-1][j]=='G' && board[i-2][j]=='G'){
+                    if(ai_board[i-1][j]=='G' && ai_board[i-2][j]=='G'){
                         ghost_goats++;
                     }  
 
-                    if(board[i+1][j]=='G' && board[i+2][j]=='G' ){
+                    if(ai_board[i+1][j]=='G' && ai_board[i+2][j]=='G' ){
                         ghost_goats++;
                     }  
 
 
-                    if(board[i][j+1]=='G' && board[i][j+2]=='G'){
+                    if(ai_board[i][j+1]=='G' && ai_board[i][j+2]=='G'){
                       ghost_goats++;
                     }      
           
-                    if(board[i][j-1]=='G' && board[i][j-2]=='G'){
+                    if(ai_board[i][j-1]=='G' && ai_board[i][j-2]=='G'){
                         ghost_goats++;
                     } 
 
@@ -1147,7 +1169,7 @@ int possible_captures(){
                     }  
 
     
-                    if(ai_board[i][j+1]=='G' && board[i][j+2]=='*'){
+                    if(ai_board[i][j+1]=='G' && ai_board[i][j+2]=='*'){
                      possible_captures++;
                     }      
           
@@ -1160,20 +1182,20 @@ int possible_captures(){
                 else if((i==0 && j==1)||(i==0 && j==3)||(i==1 && j==0)||(i==1 && j==2)||(i==1 && j==4)|| (i==2 && j==1)||(i==2 && j==3)||
                     (i==3 && j==0)||(i==3 && j==2)||(i==3 && j==4)|| (i==4 && j==1)||(i==4 && j==3)){
     
-                    if(board[i-1][j]=='G' && board[i-2][j]=='*'){
+                    if(ai_board[i-1][j]=='G' && ai_board[i-2][j]=='*'){
                        possible_captures++;
                     }  
 
-                    if(board[i+1][j]=='G' && board[i+2][j]=='*' ){
+                    if(ai_board[i+1][j]=='G' && ai_board[i+2][j]=='*' ){
                         possible_captures++;
                     }  
 
 
-                    if(board[i][j+1]=='G' && board[i][j+2]=='*'){
+                    if(ai_board[i][j+1]=='G' && ai_board[i][j+2]=='*'){
                       possible_captures++;
                     }      
           
-                    if(board[i][j-1]=='G' && board[i][j-2]=='*'){
+                    if(ai_board[i][j-1]=='G' && ai_board[i][j-2]=='*'){
                        possible_captures++;
                     } 
 
@@ -1338,4 +1360,3 @@ void reverse_ai_goat_move(  int counter, struct Move ai_move[21] ){
     ai_turn="GOAT";
 
 }
-
