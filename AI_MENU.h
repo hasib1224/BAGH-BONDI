@@ -34,17 +34,6 @@ int g1,g2,g3,g4,t1,t2,t3,t4;  //Temporary_variable_for_input
    };
 
 
-
-
-
-
-
-
-
-
-
-
-
 void ai_mode(){
     cleardevice();           
     // readimagefile("UNDER_DEVELOP.jpg",500,200,1100, 500);
