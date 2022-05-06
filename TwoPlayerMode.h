@@ -4,6 +4,8 @@
 #include"menu.h"
 
 void two_player_mode(){
+   board_initialize();
+   total_goat=20, killed_goat=0 ;
    
    cleardevice();
    board_view();
@@ -22,7 +24,8 @@ void two_player_mode(){
               break;
             }
 
-         }else if(total_goat==0){
+         }
+         else if(total_goat==0){
             goat_scope();
 
             if(goat_suc_input==5){
