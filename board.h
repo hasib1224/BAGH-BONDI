@@ -71,7 +71,6 @@ void board_initialize(){
    board2[4][4]='T';
 }
 
-
 void welcome(){
 
    settextstyle(8,0,5);
@@ -87,7 +86,6 @@ void welcome(){
    delay(7);
 
 }
-
 
 
 int tiger_possible_move(int m1,int m2){ 
@@ -281,6 +279,3 @@ void board_view(){
 
 #define board_h
 #endif
-
-
-
