@@ -521,8 +521,7 @@ void tiger_input(){
                            k=1;
                            tiger_suc_input=6; //tiger succes input
                            break;
-                          
-                          
+ 
                         }
                         else if(i==kill_scope_track[q].x && j==kill_scope_track[q].y){
 
@@ -933,9 +932,7 @@ void tiger_win_screen(){
    setcolor(WHITE);
    outtextxy(540,220,"CONGRATULATIONS!!");
    outtextxy(520,270,"TIGER WIN THE MATCH !!");
-   delay(7000);
-  
-
+   delay(7000);  
 }
 
 
@@ -1142,21 +1139,15 @@ int ai_mode(){
 
 //.........................BOARD INITIALIZED..................
 void board_initialize(){
-
-
    for(int i=0;i<5;i++){
-
       for(int j=0;j<5;j++){
          board2[i][j]='*';
       }
-
-   }
-    
+   }  
    board2[0][0]='T';
    board2[0][4]='T';
    board2[4][0]='T';
    board2[4][4]='T';
-
 }
 
 
