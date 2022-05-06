@@ -8,30 +8,9 @@ using namespace std;
 #include<iostream>
 #include "board.h"
 
-#define infinity 9999999
+#include "ai_goat.h"
+#include "ai_tiger.h"
 
-
-int g1,g2,g3,g4,t1,t2,t3,t4;  //Temporary_variable_for_input
-  //char board[50][50];
-  char ai_board[50][50];
-  int g_count=20;       //GOAT NUMBER IS UP TO 20
-  int t_count=4;        // TOTAL TIGER IS
-  //int total_move=0;     //TIGERS POSSIBLE MOVE NUMBER      
-  int killed_g=0 ;       // KILLED GOAT NUMBER  
-  int ai_killed_goat=0;
-
-  int move_from[2],move_to[2] , tiger_kill_move_flag=0 ;
-
-  int highest_search_depth = 2;
-
-  string ai_turn;
-
-  enum MoveType { GOAT_PLACE, GOAT_MOVE , TIGER_MOVE, TIGERS_KILL_MOVE};
-
-  struct Move{
-      MoveType type;
-      int from[2],to[2] ;
-   };
 
 
 void ai_mode(){
@@ -94,10 +73,12 @@ void ai_mode(){
             break;                           
           }
           else if((x>520 && x<680) && (y>140 && y<200)){
+            ai_goat(); 
             ai_tiger_mode=1;
             break;
           }
           else if((x>760 && x<930) && (y>140 && y<200)){
+            ai_tiger();
             ai_goat_mode=1;
             break;
           }
@@ -105,14 +86,13 @@ void ai_mode(){
         }
       }
 
-       if(back_menu_flag==1) break;
+      if(back_menu_flag==1) break;
       else if(ai_tiger_mode==1){
-        cout<<"ai.h";
         break;
       }
-       else if(ai_goat_mode==1){
-         break;
-        }
+      else if(ai_goat_mode==1){
+        break;
+      }
 
     }
     
@@ -120,6 +100,6 @@ void ai_mode(){
 
   }
 
-  #endif
+#endif
 
 
