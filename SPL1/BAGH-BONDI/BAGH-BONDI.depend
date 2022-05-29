@@ -1,0 +1,106 @@
+# depslib dependency file v1.0
+1653760075 source:d:\spl1\bagh-bondi\aimenu.cpp
+	"aiMode.h"
+	"globalVariable.h"
+	"tiger.h"
+	"goat.h"
+	"aiMiniMax.h"
+
+1653713191 d:\spl1\bagh-bondi\aimode.h
+	<bits/stdc++.h>
+	<graphics.h>
+	<windows.h>
+	<iostream>
+
+1653723380 d:\spl1\bagh-bondi\globalvariable.h
+	"twoPlayerMode.h"
+
+1653757373 d:\spl1\bagh-bondi\twoplayermode.h
+	<bits/stdc++.h>
+	<graphics.h>
+	<windows.h>
+	<iostream>
+	"globalVariable.h"
+
+1653713074 d:\spl1\bagh-bondi\tiger.h
+	"twoPlayerMode.h"
+	"globalVariable.h"
+
+1653713158 d:\spl1\bagh-bondi\goat.h
+	"twoPlayerMode.h"
+	"globalVariable.h"
+
+1653713308 d:\spl1\bagh-bondi\aiminimax.h
+	"aiMode.h"
+	"globalVariable.h"
+
+1653713602 source:d:\spl1\bagh-bondi\boardinitialize.cpp
+	"twoPlayerMode.h"
+	"globalVariable.h"
+
+1653713654 source:d:\spl1\bagh-bondi\boardpixelco-ordinate.cpp
+	"twoPlayerMode.h"
+	"globalVariable.h"
+
+1653761946 source:d:\spl1\bagh-bondi\boardview.cpp
+	"tiger.h"
+	"twoPlayerMode.h"
+	"globalVariable.h"
+
+1653761046 source:d:\spl1\bagh-bondi\goatinput.cpp
+	"goat.h"
+	"globalVariable.h"
+
+1653758259 source:d:\spl1\bagh-bondi\goatmovescopeprint.cpp
+	"goat.h"
+	"globalVariable.h"
+
+1653712931 source:d:\spl1\bagh-bondi\main.cpp
+	<bits/stdc++.h>
+	"TwoPlayerMode.h"
+	"aiMode.h"
+
+1653763053 source:d:\spl1\bagh-bondi\menu.cpp
+	"twoPlayerMode.h"
+	"globalVariable.h"
+
+1653720827 source:d:\spl1\bagh-bondi\minimax.cpp
+	"aiMiniMax.h"
+	"globalVariable.h"
+
+1653760227 source:d:\spl1\bagh-bondi\tigerinput.cpp
+	"tiger.h"
+	"globalVariable.h"
+
+1653714129 source:d:\spl1\bagh-bondi\tigermoveinfo.cpp
+	"tiger.h"
+	"globalVariable.h"
+
+1653760567 source:d:\spl1\bagh-bondi\tigermovescope.cpp
+	"tiger.h"
+	"globalVariable.h"
+
+1653714211 source:d:\spl1\bagh-bondi\tigermovescopeprint.cpp
+	"tiger.h"
+	"globalVariable.h"
+
+1653714278 source:d:\spl1\bagh-bondi\tigerpossiblemove.cpp
+	"tiger.h"
+	"globalVariable.h"
+
+1653760120 source:d:\spl1\bagh-bondi\twoplayer.cpp
+	"tiger.h"
+	"goat.h"
+	"twoPlayerMode.h"
+	"globalVariable.h"
+
+1653762722 source:d:\spl1\bagh-bondi\wecomepage.cpp
+	"twoPlayerMode.h"
+
+1653714438 source:d:\spl1\bagh-bondi\winningscreen.cpp
+	"twoPlayerMode.h"
+
+1653720941 source:d:\spl1\bagh-bondi\aiothersmethod.cpp
+	"aiMiniMax.h"
+	"globalVariable.h"
+

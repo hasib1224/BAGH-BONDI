@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="wecomePage.cpp" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="273" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="menu.cpp" open="1" top="1" tabpos="14" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="305" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="tigerPossibleMove.cpp" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="571" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="aiMenu.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2876" topLine="129" />
+		</Cursor>
+	</File>
+	<File name="boardView.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="221" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="goatInput.cpp" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1757" topLine="18" />
+		</Cursor>
+	</File>
+	<File name="twoPlayerMode.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="402" topLine="7" />
+		</Cursor>
+	</File>
+	<File name="tigerMoveScopePrint.cpp" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="281" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="twoPlayer.cpp" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="865" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="boardInitialize.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="305" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="aiOthersMethod.cpp" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="25018" topLine="28" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="13" />
+			<Collapse line="129" />
+			<Collapse line="138" />
+			<Collapse line="219" />
+			<Collapse line="316" />
+			<Collapse line="329" />
+			<Collapse line="530" />
+			<Collapse line="702" />
+			<Collapse line="710" />
+			<Collapse line="717" />
+			<Collapse line="724" />
+			<Collapse line="731" />
+			<Collapse line="740" />
+			<Collapse line="748" />
+			<Collapse line="767" />
+			<Collapse line="782" />
+		</Folding>
+	</File>
+	<File name="tigerInput.cpp" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1681" topLine="6" />
+		</Cursor>
+	</File>
+	<File name="goatMoveScopePrint.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="668" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="aiMiniMax.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="209" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="tiger.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="260" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="tigerMoveInfo.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="561" topLine="1" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="555" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="globalVariable.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="499" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="goat.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="259" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="boardPixelCo-ordinate.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1120" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="winningScreen.cpp" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="335" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="tigerMoveScope.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="694" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="aiMode.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="383" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="minimax.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="852" topLine="21" />
+		</Cursor>
+		<Folding>
+			<Collapse line="114" />
+		</Folding>
+	</File>
+</CodeBlocks_layout_file>
