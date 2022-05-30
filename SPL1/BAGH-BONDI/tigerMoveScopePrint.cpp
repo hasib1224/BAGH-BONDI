@@ -1,7 +1,6 @@
 
 
 #include"tiger.h"
-//#include"twoPlayerMode.h"
 #include"globalVariable.h"
 
 void tiger_scope_print(int m1,int m2){
@@ -26,6 +25,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1-1][m2+1]=='*'){
          rectangle(board[m1-1][m2+1].x-20,board[m1-1][m2+1].y-20,board[m1-1][m2+1].x+20, board[m1-1][m2+1].y+20);
+
          scope_track[s_track].x=m1-1;
          scope_track[s_track].y=m2+1;
          s_track++;
@@ -34,8 +34,10 @@ void tiger_scope_print(int m1,int m2){
 
          if(board2[m1-2][m2+2]=='*') {
             rectangle(board[m1-2][m2+2].x-20,board[m1-2][m2+2].y-20,board[m1-2][m2+2].x+20, board[m1-2][m2+2].y+20);
+
             kill_scope_track[s_track].x=m1-2;
             kill_scope_track[s_track].y=m2+2;
+
             goat_track[s_track].x=m1-1;
             goat_track[s_track].y=m2+1;
             s_track++;
@@ -46,6 +48,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1+1][m2-1]=='*'){
          rectangle(board[m1+1][m2-1].x-20,board[m1+1][m2-1].y-20,board[m1+1][m2-1].x+20, board[m1+1][m2-1].y+20);
+
          scope_track[s_track].x=m1+1;
          scope_track[s_track].y=m2-1;
          s_track++;
@@ -53,6 +56,7 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1+1][m2-1]=='G'){
          if(board2[m1+2][m2-2]=='*') {
             rectangle(board[m1+2][m2-2].x-20,board[m1+2][m2-2].y-20,board[m1+2][m2-2].x+20, board[m1+2][m2-2].y+20);
+
             kill_scope_track[s_track].x=m1+2; kill_scope_track[s_track].y=m2-2;
             goat_track[s_track].x=m1+1;
             goat_track[s_track].y=m2-1;
@@ -63,14 +67,17 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1-1][m2-1]=='*'){
          rectangle(board[m1-1][m2-1].x-20, board[m1-1][m2-1].y-20, board[m1-1][m2-1].x+20, board[m1-1][m2-1].y+20);
+
          scope_track[s_track].x=m1-1;
          scope_track[s_track].y=m2-1;
          s_track++;
       }
       else if(board2[m1-1][m2-1]=='G'){
          if(board2[m1-2][m2-2]=='*'){rectangle(board[m1-2][m2-2].x-20,board[m1-2][m2-2].y-20,board[m1-2][m2-2].x+20, board[m1-2][m2-2].y+20);
+
             kill_scope_track[s_track].x=m1-2;
             kill_scope_track[s_track].y=m2-2;
+
             goat_track[s_track].x=m1-1;
             goat_track[s_track].y=m2-1;
             s_track++;
@@ -80,6 +87,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1+1][m2+1]=='*'){
          rectangle(board[m1+1][m2+1].x-20,board[m1+1][m2+1].y-20,board[m1+1][m2+1].x+20, board[m1+1][m2+1].y+20);
+
          scope_track[s_track].x=m1+1;
          scope_track[s_track].y=m2+1;
          s_track++;
@@ -88,8 +96,10 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1+1][m2+1]=='G'){
          if(board2[m1+2][m2+2]=='*') {
             rectangle(board[m1+2][m2+2].x-20,board[m1+2][m2+2].y-20,board[m1+2][m2+2].x+20, board[m1+2][m2+2].y+20);
+
             kill_scope_track[s_track].x=m1+2;
             kill_scope_track[s_track].y=m2+2;
+
             goat_track[s_track].x=m1+1;
             goat_track[s_track].y=m2+1;
             s_track++;
@@ -100,6 +110,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1-1][m2]=='*'){
          rectangle(board[m1-1][m2].x-20,board[m1-1][m2].y-20,board[m1-1][m2].x+20, board[m1-1][m2].y+20);
+
          scope_track[s_track].x=m1-1;
          scope_track[s_track].y=m2;
          s_track++;
@@ -108,8 +119,10 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1-1][m2]=='G'){
          if(board2[m1-2][m2]=='*') {
             rectangle(board[m1-2][m2].x-20,board[m1-2][m2].y-20,board[m1-2][m2].x+20, board[m1-2][m2].y+20);
+
             kill_scope_track[s_track].x=m1-2;
             kill_scope_track[s_track].y=m2;
+
             goat_track[s_track].x=m1-1;
             goat_track[s_track].y=m2;
             s_track++;
@@ -120,22 +133,25 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1+1][m2]=='*'){
          rectangle(board[m1+1][m2].x-20,board[m1+1][m2].y-20,board[m1+1][m2].x+20, board[m1+1][m2].y+20);
+
          scope_track[s_track].x=m1+1;
          scope_track[s_track].y=m2;
          s_track++;
       }
         else if(board2[m1+1][m2]=='G'){
             if(board2[m1+2][m2]=='*') {
-            rectangle(board[m1+2][m2].x-20,board[m1+2][m2].y-20,board[m1+2][m2].x+20, board[m1+2][m2].y+20);
-            kill_scope_track[s_track].x=m1+2; kill_scope_track[s_track].y=m2;
-            goat_track[s_track].x=m1+1; goat_track[s_track].y=m2;  s_track++;
-         }
-      }
+                rectangle(board[m1+2][m2].x-20,board[m1+2][m2].y-20,board[m1+2][m2].x+20, board[m1+2][m2].y+20);
+
+                kill_scope_track[s_track].x=m1+2; kill_scope_track[s_track].y=m2;
+                goat_track[s_track].x=m1+1; goat_track[s_track].y=m2;  s_track++;
+            }
+        }
 
 
 
       if(board2[m1][m2+1]=='*'){
          rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);
+
          scope_track[s_track].x=m1;
          scope_track[s_track].y=m2+1;
          s_track++;
@@ -143,8 +159,10 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1][m2+1]=='G'){
          if(board2[m1][m2+2]=='*') {
             rectangle(board[m1][m2+2].x-20,board[m1][m2+2].y-20,board[m1][m2+2].x+20, board[m1][m2+2].y+20);
+
             kill_scope_track[s_track].x=m1;
             kill_scope_track[s_track].y=m2+2;
+
             goat_track[s_track].x=m1;
             goat_track[s_track].y=m2+1;
             s_track++;
@@ -154,6 +172,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1][m2-1]=='*'){
          rectangle(board[m1][m2-1].x-20,board[m1][m2-1].y-20,board[m1][m2-1].x+20, board[m1][m2-1].y+20);
+
          scope_track[s_track].x=m1;
          scope_track[s_track].y=m2-1;
          s_track++;
@@ -162,8 +181,10 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1][m2-1]=='G'){
          if(board2[m1][m2-2]=='*') {
             rectangle(board[m1][m2-2].x-20,board[m1][m2-2].y-20,board[m1][m2-2].x+20, board[m1][m2-2].y+20);
+
             kill_scope_track[s_track].x=m1;
             kill_scope_track[s_track].y=m2-2;
+
             goat_track[s_track].x=m1;
             goat_track[s_track].y=m2-1;
             s_track++;
@@ -179,14 +200,17 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1-1][m2]=='*'){
          rectangle(board[m1-1][m2].x-20,board[m1-1][m2].y-20,board[m1-1][m2].x+20, board[m1-1][m2].y+20);
+
          scope_track[s_track].x=m1-1;
          scope_track[s_track].y=m2;
          s_track++;
       }
       else if(board2[m1-1][m2]=='G'){
          if(board2[m1-2][m2]=='*') { rectangle(board[m1-2][m2].x-20,board[m1-2][m2].y-20,board[m1-2][m2].x+20, board[m1-2][m2].y+20);
+
             kill_scope_track[s_track].x=m1-2;
             kill_scope_track[s_track].y=m2;
+
             goat_track[s_track].x=m1-1;
             goat_track[s_track].y=m2;
             s_track++;
@@ -196,6 +220,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1+1][m2]=='*'){
          rectangle(board[m1+1][m2].x-20,board[m1+1][m2].y-20,board[m1+1][m2].x+20, board[m1+1][m2].y+20);
+
          scope_track[s_track].x=m1+1;
          scope_track[s_track].y=m2;
          s_track++;
@@ -203,8 +228,10 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1+1][m2]=='G'){
          if(board2[m1+2][m2]=='*') {
             rectangle(board[m1+2][m2].x-20,board[m1+2][m2].y-20,board[m1+2][m2].x+20, board[m1+2][m2].y+20);
+
             kill_scope_track[s_track].x=m1+2;
             kill_scope_track[s_track].y=m2;
+
             goat_track[s_track].x=m1+1;
             goat_track[s_track].y=m2;
             s_track++;
@@ -214,6 +241,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1][m2+1]=='*'){
          rectangle(board[m1][m2+1].x-20,board[m1][m2+1].y-20,board[m1][m2+1].x+20, board[m1][m2+1].y+20);
+
          scope_track[s_track].x=m1;
          scope_track[s_track].y=m2+1;
          s_track++;
@@ -222,8 +250,10 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1][m2+1]=='G'){
          if(board2[m1][m2+2]=='*')  {
             rectangle(board[m1][m2+2].x-20,board[m1][m2+2].y-20,board[m1][m2+2].x+20, board[m1][m2+2].y+20);
+
             kill_scope_track[s_track].x=m1;
             kill_scope_track[s_track].y=m2+2;
+
             goat_track[s_track].x=m1;
             goat_track[s_track].y=m2+1;
             s_track++;
@@ -233,6 +263,7 @@ void tiger_scope_print(int m1,int m2){
 
       if(board2[m1][m2-1]=='*'){
          rectangle(board[m1][m2-1].x-20,board[m1][m2-1].y-20,board[m1][m2-1].x+20, board[m1][m2-1].y+20);
+
          scope_track[s_track].x=m1;
          scope_track[s_track].y=m2-1;
          s_track++;
@@ -240,8 +271,10 @@ void tiger_scope_print(int m1,int m2){
       else if(board2[m1][m2-1]=='G'){
          if(board2[m1][m2-2]=='*')  {
             rectangle(board[m1][m2-2].x-20,board[m1][m2-2].y-20,board[m1][m2-2].x+20, board[m1][m2-2].y+20);
+
             kill_scope_track[s_track].x=m1;
             kill_scope_track[s_track].y=m2-2;
+
             goat_track[s_track].x=m1;
             goat_track[s_track].y=m2-1;
             s_track++;

@@ -51,20 +51,6 @@ void board_view(){
       }
    }
 
-   /*
-
-   //new added for debugging
-   for(int m=0;m<5;m+=1){ cout<<"  "<<m;}
-   cout<<"\n";
-    for(int i=0;i<5;i++){
-        cout<<i;
-        for(int j=0;j<5;j++){
-           cout<<" "<<board2[i][j]<<" ";
-        }cout<<"\n";
-    }
-
-    */
-
     char *print_goatNum = numToString(total_goat);
 
     settextstyle(10,0,5);
@@ -93,9 +79,7 @@ void board_view(){
     }
 
 
-
    goat_win_flag=tiger_info();
-
 
 }
 
@@ -118,7 +102,6 @@ char* numToString(int num){
 
     return str;
 }
-
 
 
 void goats_turn_print(){

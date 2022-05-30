@@ -1,6 +1,5 @@
 
 #include"tiger.h"
-//#include"twoPlayerMode.h"
 #include"globalVariable.h"
 
 int tiger_possible_move(int m1,int m2){

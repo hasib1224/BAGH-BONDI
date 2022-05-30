@@ -9,7 +9,7 @@ void tiger_win_screen(){
    setcolor(WHITE);
    outtextxy(540,220,"CONGRATULATIONS!!");
    outtextxy(520,270,"TIGER WIN THE MATCH !!");
-   delay(7000);
+   delay(6000);
 }
 
 void goat_win_screen(){
@@ -20,7 +20,7 @@ void goat_win_screen(){
 
    outtextxy(540,220,"CONGRATULATIONS!!");
    outtextxy(520,270,"GOAT WIN THE MATCH !!");
-   delay(7000);
+   delay(6000);
 
 
 }

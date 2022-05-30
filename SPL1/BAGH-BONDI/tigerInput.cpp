@@ -26,14 +26,13 @@ void tiger_input(){
 
                            board2[i][j]='T';
                            board2[tig_track.x][tig_track.y]='*';
-                           //cout<<scope_track[q].x<<" "<<scope_track[q].y<<"hvjhfchv";
-                           cleardevice();
 
+                           cleardevice();
                            board_view();
                            goats_turn_print();
 
                            k=1;
-                           tiger_suc_input=6; //tiger succes input
+                           tiger_suc_input=6;
                            break;
 
                         }
@@ -52,7 +51,7 @@ void tiger_input(){
                            goats_turn_print();
 
                            k=1;
-                           tiger_suc_input=6; //tiger succes input
+                           tiger_suc_input=6;
                            break;
 
                         }

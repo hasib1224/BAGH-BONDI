@@ -6,10 +6,6 @@
 
 void ai_mode(){
     cleardevice();
-    // readimagefile("UNDER_DEVELOP.jpg",500,200,1100, 500);
-    //  settextstyle(8,0,3);
-    //  setcolor(WHITE);
-    //  outtextxy(670,530,"UNDER DEVELOPING....");
 
     settextstyle(10,0,5);
     setcolor(WHITE);
@@ -87,8 +83,6 @@ void ai_mode(){
 
     }
 
-
-
   }
 
 
@@ -118,8 +112,6 @@ void ai_goat(){
                 g_count--;
                 total_goat--;
                 delay(4000);
-
-
                 board_view();
                 tigers_turn_print();
             }
@@ -137,13 +129,11 @@ void ai_goat(){
             if(value==infinity) {
                 delay(4000);
                 goat_win_screen();
-               //cout<<"CONGRATULATIONS!! GOAT WIN THE MATCH!!!";
                 break;
             }
             else if(value==(-infinity)){
                 delay(4000);
                 tiger_win_screen();
-                //cout<<"CONGRATULATIONS!! TIGER WIN THE MATCH!!!";
                 break;
             }
 
@@ -235,32 +225,24 @@ void ai_tiger(){
                 board_view();
                 goats_turn_print();
                 break;
-
             }
-
         }
+
 
         if(value==infinity) {
             delay(4000);
             tiger_win_screen();
-            //cout<<"CONGRATULATIONS!! TIGER WIN THE MATCH!!!";
             break;
         }
         else if(value==(-infinity)){
             delay(4000);
             goat_win_screen() ;
-            //cout<<"CONGRATULATIONS!! GOAT WIN THE MATCH!!!";
             break;
         }
 
     }
 
 }
-
-
-
-
-
 
 
 

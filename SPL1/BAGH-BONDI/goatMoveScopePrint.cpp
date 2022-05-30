@@ -1,6 +1,4 @@
 
-
-
 #include"goat.h"
 #include"globalVariable.h"
 
@@ -122,7 +120,6 @@ void goat_move_scope_print(int m1,int m2){
          s_track++;
       }
 
-
    }
 
 
@@ -157,10 +154,7 @@ void goat_move_scope_print(int m1,int m2){
          s_track++;
       }
 
-
    }
-
-
 
 }
 

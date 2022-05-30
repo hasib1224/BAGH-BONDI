@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1653760075 source:d:\spl1\bagh-bondi\aimenu.cpp
+1653890006 source:d:\spl1\bagh-bondi\aimenu.cpp
 	"aiMode.h"
 	"globalVariable.h"
 	"tiger.h"
@@ -15,7 +15,7 @@
 1653723380 d:\spl1\bagh-bondi\globalvariable.h
 	"twoPlayerMode.h"
 
-1653757373 d:\spl1\bagh-bondi\twoplayermode.h
+1653904821 d:\spl1\bagh-bondi\twoplayermode.h
 	<bits/stdc++.h>
 	<graphics.h>
 	<windows.h>
@@ -42,7 +42,7 @@
 	"twoPlayerMode.h"
 	"globalVariable.h"
 
-1653761946 source:d:\spl1\bagh-bondi\boardview.cpp
+1653890363 source:d:\spl1\bagh-bondi\boardview.cpp
 	"tiger.h"
 	"twoPlayerMode.h"
 	"globalVariable.h"
@@ -51,24 +51,24 @@
 	"goat.h"
 	"globalVariable.h"
 
-1653758259 source:d:\spl1\bagh-bondi\goatmovescopeprint.cpp
+1653890465 source:d:\spl1\bagh-bondi\goatmovescopeprint.cpp
 	"goat.h"
 	"globalVariable.h"
 
-1653712931 source:d:\spl1\bagh-bondi\main.cpp
+1653897633 source:d:\spl1\bagh-bondi\main.cpp
 	<bits/stdc++.h>
 	"TwoPlayerMode.h"
 	"aiMode.h"
 
-1653763053 source:d:\spl1\bagh-bondi\menu.cpp
+1653890561 source:d:\spl1\bagh-bondi\menu.cpp
 	"twoPlayerMode.h"
 	"globalVariable.h"
 
-1653720827 source:d:\spl1\bagh-bondi\minimax.cpp
+1653889426 source:d:\spl1\bagh-bondi\minimax.cpp
 	"aiMiniMax.h"
 	"globalVariable.h"
 
-1653760227 source:d:\spl1\bagh-bondi\tigerinput.cpp
+1653889487 source:d:\spl1\bagh-bondi\tigerinput.cpp
 	"tiger.h"
 	"globalVariable.h"
 
@@ -80,15 +80,15 @@
 	"tiger.h"
 	"globalVariable.h"
 
-1653714211 source:d:\spl1\bagh-bondi\tigermovescopeprint.cpp
+1653889817 source:d:\spl1\bagh-bondi\tigermovescopeprint.cpp
 	"tiger.h"
 	"globalVariable.h"
 
-1653714278 source:d:\spl1\bagh-bondi\tigerpossiblemove.cpp
+1653889837 source:d:\spl1\bagh-bondi\tigerpossiblemove.cpp
 	"tiger.h"
 	"globalVariable.h"
 
-1653760120 source:d:\spl1\bagh-bondi\twoplayer.cpp
+1653889898 source:d:\spl1\bagh-bondi\twoplayer.cpp
 	"tiger.h"
 	"goat.h"
 	"twoPlayerMode.h"
@@ -100,7 +100,7 @@
 1653714438 source:d:\spl1\bagh-bondi\winningscreen.cpp
 	"twoPlayerMode.h"
 
-1653720941 source:d:\spl1\bagh-bondi\aiothersmethod.cpp
+1653890310 source:d:\spl1\bagh-bondi\aiothersmethod.cpp
 	"aiMiniMax.h"
 	"globalVariable.h"
 

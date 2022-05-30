@@ -20,7 +20,7 @@ void two_player_mode(){
       tiger_suc_input=0;
       goat_suc_input=0;
 
-      while(1){                 //.....goat input loop.......
+      while(1){                         //.....goat input loop.......
          if(total_goat>0){
             goat_input_WhenGoatNumber_NotZero();
 
@@ -52,8 +52,7 @@ void two_player_mode(){
 
 
       if( goat_win_flag!=0 ){
-         //.....Tiger input loop........
-         while(1){
+         while(1){                            //.....Tiger input loop........
             tiger_scope();
             if(tiger_suc_input==6) break;
 
@@ -62,12 +61,12 @@ void two_player_mode(){
       }
 
 
-      if(killed_goat==5){      //.....TIGER WINNING SCREEEN.......
+      if(killed_goat==5){
         tiger_win_screen();
         break;
       }
 
-      if(goat_win_flag==0){   //.....GOAT WINNING SCREEN..........
+      if(goat_win_flag==0){
         goat_win_screen();
         break;
 

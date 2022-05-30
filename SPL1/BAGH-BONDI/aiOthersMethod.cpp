@@ -1,5 +1,4 @@
 
-
 #include"aiMiniMax.h"
 #include"globalVariable.h"
 
@@ -310,9 +309,7 @@ int ai_goat_position_evaluate(){
     }
 
     return (-1000 * ai_killed_goat + 300 * ghost_goats() - 200 * possible_captures() + 500 * trapped_tigers());
-    //cout<<"dhukse";
 }
-
 
 int ai_tiger_position_evaluate(){
 
@@ -368,33 +365,28 @@ int  ai_tiger_move_type( int row, int col, int counter, struct Move ai_move[21] 
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1-1; ai_move[counter].to[1]=m2-1;
             counter++;
-
-
-
         }
+
         else if( ai_board[m1-1][m2-1]=='G' && ai_board[m1-2][m2-2]=='*'){
             ai_move[counter].type=TIGERS_KILL_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1-2; ai_move[counter].to[1]=m2-2;
             counter++;
-
-
         }
+
 
         if( ai_board[m1+1][m2+1]=='*'){
             ai_move[counter].type=TIGER_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1+1; ai_move[counter].to[1]=m2+1;
             counter++;
-
         }
+
         else if( ai_board[m1+1][m2+1]=='G' && ai_board [m1+2][m2+2]=='*'){
             ai_move[counter].type=TIGERS_KILL_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1+2; ai_move[counter].to[1]=m2+2;
             counter++;
-
-
         }
 
         if( ai_board[m1-1][m2]=='*'){
@@ -402,25 +394,22 @@ int  ai_tiger_move_type( int row, int col, int counter, struct Move ai_move[21] 
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1-1; ai_move[counter].to[1]=m2;
             counter++;
-
-
         }
+
         else if( ai_board[m1-1][m2]=='G' &&  ai_board[m1-2][m2]=='*'){
             ai_move[counter].type=TIGERS_KILL_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1-2; ai_move[counter].to[1]=m2;
             counter++;
-
-
         }
+
         if( ai_board[m1+1][m2]=='*'){
             ai_move[counter].type=TIGER_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1+1; ai_move[counter].to[1]=m2;
             counter++;
-
-
         }
+
         else if( ai_board[m1+1][m2]=='G' && ai_board[m1+2][m2]=='*'){
             ai_move[counter].type=TIGERS_KILL_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
@@ -441,25 +430,20 @@ int  ai_tiger_move_type( int row, int col, int counter, struct Move ai_move[21] 
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1; ai_move[counter].to[1]=m2+2;
             counter++;
-
-
         }
+
         if( ai_board[m1][m2-1]=='*'){
             ai_move[counter].type=TIGER_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1; ai_move[counter].to[1]=m2-1;
             counter++;
-
-
         }
         else if( ai_board[m1][m2-1]=='G' && ai_board[m1][m2-2]=='*'){
             ai_move[counter].type=TIGERS_KILL_MOVE;
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1; ai_move[counter].to[1]=m2-2;
             counter++;
-
         }
-
 
     }
     else if((m1==0 && m2==1)||(m1==0 && m2==3)||(m1==1 && m2==0)||(m1==1 && m2==2)||(m1==1 && m2==4)|| (m1==2 && m2==1)||(m1==2 && m2==3)||
@@ -526,7 +510,6 @@ int  ai_tiger_move_type( int row, int col, int counter, struct Move ai_move[21] 
     return counter;
 
   }
-
 
 int ai_goat_move_type(int row, int col, int counter, struct Move ai_move[21]){
 
@@ -634,14 +617,11 @@ int ai_goat_move_type(int row, int col, int counter, struct Move ai_move[21]){
             ai_move[counter].from[0]=m1; ai_move[counter].from[1]=m2;
             ai_move[counter].to[0]=m1; ai_move[counter].to[1]=m2-1;
             counter++;
-
         }
 
     }
 
     return counter;
-
-
 
 }
 
@@ -780,14 +760,14 @@ void reverse_ai_tigers_kill_move(  int counter, struct Move ai_move[21] ){
 
 }
 
+
+
 void board2_TO_ai_board(){
     for(int i=0;i<5;i++){
       for(int j=0;j<5;j++){
         ai_board[i][j] = board2[i][j];
-
       }
    }
-
 }
 
 

@@ -24,22 +24,6 @@ void board_view();
 void goats_turn_print();
 void tigers_turn_print();
 
-
-/*
-void tiger_scope_print(int m1,int m2);
-void tiger_input();
-void tiger_scope();
-int tiger_info();
-int tiger_possible_move(int m1,int m2);
-
-
-void goat_scope_print(int m1,int m2);
-void goat_input_2 ();
-void goat_scope();
-void goat_input();
-
-*/
-
 int menu();
 
 void tiger_win_screen();

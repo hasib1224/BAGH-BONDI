@@ -26,13 +26,8 @@ char ai_board[50][50];
 int g_count=20;       //GOAT NUMBER IS UPTO 20
 int ai_killed_goat=0;
 int move_from[2],move_to[2] , tiger_kill_move_flag=0 ;
-int highest_search_depth = 2;
+int highest_search_depth = 3;
 string ai_turn;
-
-
-
-
-
 
 
 int main(){

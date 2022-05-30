@@ -42,7 +42,6 @@ int menu(){
                }
                if((x>580 && x<1055) && (y>385 && y<450)){
                   mode_start=2;
-                  //cout<<"menu.h";
                   break;
 
                }

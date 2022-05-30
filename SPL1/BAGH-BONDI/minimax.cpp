@@ -12,7 +12,6 @@ int ai_goat_minimax(int depth, int alpha, int beta){
     }
 
 
-
     int counter=0;
     struct Move ai_move[21];
     counter = generate_move_type ( counter, ai_move);
@@ -21,8 +20,6 @@ int ai_goat_minimax(int depth, int alpha, int beta){
     int val;
 
     for(int i=0; i<counter;i++){
-
-       //cout<<"minmax"<<counter<<" "<<i<<" "<<ai_move[i].type<<" ";
 
        switch (ai_move[i].type){
             case TIGER_MOVE:
@@ -100,17 +97,13 @@ int ai_goat_minimax(int depth, int alpha, int beta){
         }
 
     }
-
-    //FOR THIS METOD MIN IS "GOAT" AND IT DENOTES ALPHA VALUE
-    //WHEN THE TURN IS "GOAT" AND THIS MINIMAX VALUE BELONGS TO THE PREVIOUS MINIMAX(TIGER)
-    //SO RETURN ALPHA
-
     if (ai_turn=="GOAT")
         return alpha ;
 
     else return beta ;
 
 }
+
 
 int ai_tiger_minimax(int depth, int alpha, int beta){
 
@@ -131,8 +124,6 @@ int ai_tiger_minimax(int depth, int alpha, int beta){
     int val;
 
     for(int i=0; i<counter;i++){
-
-       //cout<<depth<<"minmax"<<counter<<" "<<i<<" "<<ai_move[i].type<<" ";
 
        switch (ai_move[i].type){
 
@@ -214,10 +205,6 @@ int ai_tiger_minimax(int depth, int alpha, int beta){
         }
 
     }
-
-    //FOR THIS METOD MIN IS "TIGER" AND IT DENOTES ALPHA VALUE
-    //WHEN THE TURN IS "TIGER" AND THIS MINIMAX VALUE BELONGS TO THE PREVIOUS MINIMAX(GOAT)
-    //SO RETURN ALPHA
 
     if (ai_turn=="TIGER")
         return alpha;
